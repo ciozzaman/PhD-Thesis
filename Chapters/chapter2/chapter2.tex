@@ -144,19 +144,150 @@ Gm=q
 Scanning the volume with an emitter of known emissivity it is possible to determine all the elements of the matrix G, the geometry matrix. For this work this was done with the Monte Carlo ray tracing code CHERAB. To obtain the emissivity map from the power on the foil the geometry matrix must be inverted, but this is an ill-posed problem. A problem is well posed if a solution exists, it is unique and it has small changes for small changes of the inputs. \cite{Hansen1998} In the case of tomographic inversions very often the last condition fails. \cite{Hansen2010} This means additional informations have to be added in order to find a solution. In the most famous case of tomographic inversion, MRI scans, the source and detector are moved around the volume of interest as to collect information from different angles. This decreases the indetermination of the problem and a solution can be found. In our case neither observer of observed can be moved so additional information are required for a stable solution.
 \subsection{literature}
 \subsubsection{Truncated singular value decomposition}
-The truncated singular value decomposition (SVD) method for tomographic inversion relies of the direct inversion of the geometry matrix. In order t 
-\subsubsection {SART}
-\subsubsection{forward minimisation residuals (does it exist? Need to check with Chris)}
-\subsection{regularisation}
-\subsubsection{limit of laplacian}
-\subsubsection{eigenvalues truncation}
-\subsubsection{regularisation parameter}
-\subsection{novelty (is it?): bayesian approach + regularization
-benefits, comparison with other methods}
-\subsection{MASTU implementation
-restrictions (FOV, divertor), artefacts corrections (non negativity, others), uncertainty}
+The truncated singular value decomposition (SVD) method for tomographic inversion relies of the direct inversion of the geometry matrix. The inversion is performed by finding the eighenvalues and eighenvectors associated with the geometry matrix. The matrix inversion can often be numerically performed, but the smaller eighenvalues greatly enhance the effect of any noise in the measured data. This can be limited by neglecting the smaller eighenvalues (hence truncating) and to consider anly the more significant ones.
+\subsubsection{Tikhonov regularization}
+With this method the synthetic image $Gm'$ is calculated and the sum of the square of the residuals calculated. This can then be minimised to find the best precursor. Because this method is also effected by noise a penalty is added to limit its effect. There are various choices for what to limit exactly, but the most common is to limit a derivate of the solution from the zero-th order (limitation on large values) to second (limitation of the laplacian). In this work the laplacian penalty is considered. The derivate is multiplied by a regularisatio coefficient in determining the penalty. The sum of the penalty and the residuals is then minimised. \cite{Schou2015} This method is simple but very numerically demanding for large number of voxels. This can be alleviated by providing the Hessian matrix to the solver, but is still onerous as large matrixes have to be handled.
+\subsubsection{Simultaneous algebraic reconstruction technique}
+Simultaneous algebraic reconstruction technique (SART) is an iterative medhod that aims at minimizing the difference betweeen the measurement $q$ and the synthetic image $Gm'$, and the difference at each step informs how to correct the previous guess. Here too the noise require a penalty with relative regularisation parameter to be applied, but it is in general less computationally demanding than the previous one. SART can also be modified to avoid negative emissivity. Because of it's relative low computational cost this method is often the method of choice when inverting imaging data from plasmas.
 
-\section{Results}
+\subsection{Regularisation}
+The regularisation method depend on the inversion method
+\subsubsection{Eigenvalues truncation}
+It is often observed that the eigenvalues associated with the geometry matrix, sorted by amplitude, behave as shown in \autoref{fig:eigenvalues}.
+
+\begin{figure}
+	\centering
+	\includegraphics[trim={0 20 0 40},clip,width=\linewidth]{Chapters/chapter2/figs/eigenvalues_for_alpha_1e-30_2.eps}
+	\caption{Typical amplitude of the eigenvalues in an undetermined inversion problem.}
+	\label{fig:eigenvalues}
+\end{figure}
+
+In the process of inverting the geometry matrix the the reciprocal of the eigenvalues is used. This means that the smaller of them, that have the lesser influence on the measured data, have a disproportionate effect on the solution. To limit this the smaller eigenvalues can be neglected. How to find the threshold is not simple and it also depends on the noise level in the input data. In general truncated SVD returns more detailed inversions, but it is more effected by noise than other methods. More detail can be found in \cite{Schou2015} and \cite{Widman2002}.
+
+\subsubsection{regularisation parameter}
+For the Tikinov and SART algorithm one has to establish the magnitude of the regulasiration coefficient. A commonly used method is the L-curve. With this approach the emissivity solution is calculated for a range of regularisation parameters. The residuals norm and the norm of the penalty are plotted in a log-log plot to create the L-curve. A typical L-curve is shown in \autoref{fig:l-curve}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/l-curve.png}
+	\caption{Typical L-curve shape. On the horizontal axis the residual norm, on the vertical the penalty norm. \hl{I will create my own plot}}
+	\label{fig:l-curve}
+\end{figure}
+
+The optimal solution is one that fits well the measured data but is not dominated by noise. A good compromise corresponds to the lower left corner of the curve, the region of highest curvature. This procedure requires a multitude of solution to be found for each inversion, but guarantees that the regulatisation is always adeguate to the signal strength.
+\subsection{novelty (is it?): bayesian approach + regularization}
+This approach was developed specifically for the IRVB in MASTU and it is similar to Tikhonov regularisation. The residual norm is calculates including the uncertainty of the measurement in each pixel. Penalties can be simply included by adding them to the residuals norm so the sollowing are included:
+\begin{itemize}
+\item laplacian of the emissivity
+\item negative emissivity values
+\item large emissivity close to the pinhole
+\end{itemize}
+Additionally two variables are included: a uniform power density value over the whole foil and one only over the region of the foil actually effected by the plasma (see \autoref{fig:cherab2}). This is done to allow for uniform signal arising from a change of the IR camera temperature or sensitivity, or sources of radiation close to the pinhole to be accounted for and not effect the emissivity distribution.
+To alleviate the computational cost of the method the Hessian matrix, the derivate of the quantity to minimise respect to all the variables (emissivity in every pixel and offsets) is generated. The minimisation was operated with the L-BFGS-B algorithm, specifically the Python scipy.optimize.fmin\_l\_bfgs\_b package. \cite{Morales2011}
+By varying the regularisation coefficient an L-curve is built and the point of maximum curvature found.
+Every penalty should be provided of an indivitual coefficient and an L-curve built to find its optimal value, but because it would be computationally prohibitively onerous a coefficient that returns the desired result is determined a priory.\\
+\hl{add all the math}
+\subsection{Comparison with other methods}
+The most commonly used inversion algorithms are Tikonov regularisation and SART. The optimisation of the regularisation coefficient is sometimes neglected, but for a fair comparison I will use the L-curve method.\\
+\hl{to be done}
+
+\section{first MASTU experimental campaign results}
+\subsection{Movement of peak radiation with detachment}
+\hl{ACTUAL OBSERVATION}\\
+In discharges in which the core density was progressively increased, both via fuelling from the midplane and the divertor, the emissivity peak moves first from the inner target, then from the outer one, to the x-point. Increasing the density further the radiation moves upstream on the inner separatrix.
+In lower power discharges the inner target has s comparatively much lower emissivity than the outer target, even if the sequence of events remains the same.
+In lower power discharges the transition on the inner leg seems significantly faster than in higher power discharges.
+See \autoref{fig:44892} and \autoref{fig:45401}.
+
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.21\textwidth}
+         \centering
+         \includegraphics[trim={0 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_1.png}
+         %\caption{pinhole 4mm/stand-off 45mm}
+         \label{fig:44892_1}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.2\textwidth}
+         \centering
+         \includegraphics[trim={70 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_2.png}
+         %\caption{$4/60$}
+         \label{fig:44892_2}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.2\textwidth}
+         \centering
+         \includegraphics[trim={70 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_3.png}
+         %\caption{$4/60$}
+         \label{fig:44892_3}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.21\textwidth}
+         \centering
+         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_4.png}
+         %\caption{$4/60$}
+         \label{fig:44892_4}
+     \end{subfigure}
+    \caption{Changes in emissivity pattern from a attached plasma (left) to a detached one (right) in a low power discharge (shot 44892, DN-600-CD-OH, L-mode)}
+    \label{fig:44892}
+\end{figure}
+
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.21\textwidth}
+         \centering
+         \includegraphics[trim={0 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/45401_1.png}
+         %\caption{pinhole 4mm/stand-off 45mm}
+         \label{fig:45401_1}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.2\textwidth}
+         \centering
+         \includegraphics[trim={70 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/45401_22.png}
+         %\caption{$4/60$}
+         \label{fig:45401_22}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.21\textwidth}
+         \centering
+         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/45401_3.png}
+         %\caption{$4/60$}
+         \label{fig:45401_3}
+     \end{subfigure}
+    \caption{Changes in emissivity pattern from a attached plasma (left) to a detached one (right) in a high power discharge (shot 45401, DN-750-CD-2B, H-mode).}
+    \label{fig:45401}
+\end{figure}
+
+\subsection{Detachment of SXD plasmas}
+\hl{ACTUAL OBSERVATION}\\
+As mentioned before the LOS entering the SXD chamber are from a too close to actually determine the emissivity distribution inside, but it is still possible to determine changes in the total radiated power. In \autoref{fig:45371} it is shown the change in total radiated power for a SXD discharge that experiences radiative detachment of the outer leg. Initially the total power radiated from the outer leg (simply defined as the region with $r>r_{X-point}, z<z_{X-point}$) and the SXD chamber grow together, with the part inside the chamber being the main contributor. Then after 0.4s the total in the leg remains stationary while it decreases in the chamber. This means that the radiation shifts in time upstream towards the x-point for increasing density.
+
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.21\textwidth}
+         \centering
+         \includegraphics[trim={0 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/45371_1.png}
+         \caption{target attached\\(425ms)}
+         \label{fig:45371_1}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.21\textwidth}
+         \centering
+         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/45371_2.png}
+         \caption{target detached\\(718ms)}
+         \label{fig:45371_2}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.5\textwidth}
+         \centering
+         \includegraphics[trim={0 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/45371_3.png}
+         %\caption{$4/60$}
+         \label{fig:45371_3}
+     \end{subfigure}
+    \caption{Changes in emissivity pattern for a SXD discharge where the detachment of the outer leg can be inferred from the change in total radiated power in the outer leg and SXD chamber (shot 45371, DN-600-SXD-OH, L-mode).}
+    \label{fig:45371}
+\end{figure}
+
 \subsection{XPR/radiation location and confinement}
 \subsection{XPR/detachment and power balance}
 \subsection{radiation front location and analytic models}
