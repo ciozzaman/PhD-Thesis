@@ -143,8 +143,9 @@ Gm=q
 
 Scanning the volume with an emitter of known emissivity it is possible to determine all the elements of the matrix G, the geometry matrix. For this work this was done with the Monte Carlo ray tracing code CHERAB. To obtain the emissivity map from the power on the foil the geometry matrix must be inverted, but this is an ill-posed problem. A problem is well posed if a solution exists, it is unique and it has small changes for small changes of the inputs. \cite{Hansen1998} In the case of tomographic inversions very often the last condition fails. \cite{Hansen2010} This means additional informations have to be added in order to find a solution. In the most famous case of tomographic inversion, MRI scans, the source and detector are moved around the volume of interest as to collect information from different angles. This decreases the indetermination of the problem and a solution can be found. In our case neither observer of observed can be moved so additional information are required for a stable solution.
 \subsection{literature}
-\subsubsection{SVG}
-\subsubsection{SART}
+\subsubsection{Truncated singular value decomposition}
+The truncated singular value decomposition (SVD) method for tomographic inversion relies of the direct inversion of the geometry matrix. In order t 
+\subsubsection {SART}
 \subsubsection{forward minimisation residuals (does it exist? Need to check with Chris)}
 \subsection{regularisation}
 \subsubsection{limit of laplacian}
