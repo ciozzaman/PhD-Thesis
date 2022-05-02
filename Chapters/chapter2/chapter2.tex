@@ -1,1 +1,169 @@
-This is an example of another chapter. Much like in chapter \ref{chapter1}.
+
+\section{Detachment on MAST}
+detachment, power balance, radiation front location literature, XPR
+
+
+
+\section{IRVB concept}
+\hl{what it is, previous implementations}
+
+The IRVB is the instrument of choice for the research I will perform. 
+The currently more established method to measure the energy radiated from the plasma is through resistive bolometers. A thin layer of absorbent material is exposed to the radiation and its temperature increase. This is measured via the change in resistivity of a resistor attached on the back of the foil. Each detector can measure the radiation for only one line of sight (LOS), so usually an array of detectors is present to measure the radiation across one plane. Tomographic reconstruction is then used to get the radiation profile from the line integrated values. This method is reliable and mature, but every LOS requires its own measuring apparatus and the resolution is limited by the number of sensors installed and how narrow the LOS is. A more recent approach that is expected to provide better resolution is the infra red video bolometer (IRVB). 
+
+A thin foil is exposed to the plasma radiation through a pinhole, in a way that each point of the foil corresponds to a single LOS. The foil heats according to the radiation it receives and the change in temperature is measured via an infra red camera. The advantage relies in the very large number of LOS accessible with one single device and the capability to image very large and small portions of the plasma based on foil and pinhole relative position. The downside is the physics of thermal diffusion needs to be considered and introduces a limit in the time resolution of the diagnostic. A sketch is in \autoref{fig:IRVB_sketch}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/IRVB cartoon.png}
+	\caption{Schematic representation of the main components of a IRVB diagnostic}
+	\label{fig:IRVB_sketch}
+\end{figure}
+
+There are various elements to consider in the design of the diagnostic.
+The small thickness of the foil allows to treat the heat diffusion as a 2D problem and lower the thermal inertia, allowing for a higher temperature rise for given input power. The thickness must be anyway large enough for the vast majority of the radiation to be absorbed. The foil must also (if a significant amount of neutrons are produced) be made of a material weakly subject to neutron induced transmutation and vacuum compatible.\cite{Mukai2021}
+It is important that the foil is blackened to reduce reflection, but this introduces the an interface between materials that might impede thermal transfer. The coating could, depending on the technique, be deposited non uniformly on the foil, adding to the non uniformity already present on the foil. The coating too must be stable and vacuum compatible. \cite{Mukai2016}
+The infra red camera must be positioned as close to the foil in order to increase the resolution. If the neutron flux is significant or there are mechanical constraints mirrors or periscopes must be used. All apparatus must be suitable for infra red radiation and properly coated.
+It has great importance in the design the positioning and size of the pinhole with respect of the foil. The distance and position will define the field of view of the diagnostic, its spatial resolution and the radiation intensity. The size of the pinhole will define the intensity of the signal as well and the “blur” of the image.
+\hl{Previous implementations}
+
+
+\section{MASTU implementation}
+
+The IRVB system developed with this PhD project is a prototype designed with the aim to prove this technology in spherical tokamaks, first time this is done, measuring the radiation profile around the x-point. The design, shown in \autoref{fig:IRVB_components} is based on work previously done by M. L. Reinke for an IRVB system for NSTX-U.\cite{VanEden2016} The pinhole is located left and below the projection of the centre of the foil toward the center column, as to aims the field of view to the lower x-point. Its positioning can be seen in \autoref{fig:IRVB_location}.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/IRVB2.png}
+	\caption{IRVB components overview. To change pinhole size and foil pinhole distance the tube must be removed while the camera is always accessible. Adapted from \cite{Reinke2017a}}
+	\label{fig:IRVB_components}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/where_irvb.png}
+	\caption{Positioning of the IRVB inside the vacuum vessel of MASTU. Adapted from \cite{Reinke2017a}}
+	\label{fig:IRVB_location}
+\end{figure}
+
+
+The foil is a 2.5$\mu$m thick platinum foil. The thickness is optimised to stop photons with energies up to 8.2keV. \cite{PETERSON2010} The foil and its support frame have been blackened on both sides with Aerodag® G Graphite Aerosol and calibrated with a procedure analogous to the one exposed in \cite{Itomi2014}. The layer of graphite helps to absorb radiation in the visible range avoiding reflection and even if thicker that the platinum layer it is thermally less relevant. \cite{VanEden2018} The tube where the foil is installed is slightly larger than the frame and it extends from the the vacuum chamber wall to a position close to the plasma, but still safely outside the SOL. The camera, a FLIR SC7500, images the foil through a ZnS view port with anti reflection coating and is bolted to the tube. The camera is equipped with a 2.5-5$\mu$m filter and was selected among others as the same model was adopted for other diagnostics in MASTU and the same acquisition software could potentially be developed.
+The pinhole and stand off definition was made based on the expected radiated power from the plasma estimated with CHERAB \cite{C.GiroudA.MeakinsM.CarrA.Baciero2018}\cite{Carr2017}\cite{A.MeakinsCarrM.2017}, a code that can perform ray tracing with the full geometry of MAST-U.  Based on the afore mentioned design for NSTX-U it was expected a good Signal to Noise Ratio (SNR) for a power density on the foil above $100W/m^2$ and a noise floor of about $5W/m^2$. \cite{Reinke2018} 
+
+The tube was installed on MAST-U in November 2018 while all parts outside the vacuum vessel by early 2021. the calibration of the system was performed part in 2018 and part after the end of the first experimental campaign in late 2021. More detail on the calibration procedure and design considerations in the appendix.
+
+
+\section{Numerical technique}
+To obtain the total radiated power profile a number of steps must be followed. \autoref{fig:numerical_path} shows in the bottom section the necessary steps.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/numerical_path.png}
+	\caption{Path for forward modeling, right to left, and for experimental data analysis, left to right.}
+	\label{fig:numerical_path}
+\end{figure}
+I will now illustrate each step. More detail on the calibration procedure to obtain the necessary coefficients is provided in the appendix.
+
+\subsection{Temperature calibration}
+The temperature calibration is the procedure used to convert the camera row data from counts to temperature. It involves defining the mathematical model for the conversion and finding the coefficients required. Once defined it can be applied to MASTU data to obtain the IRVB foil temperature.
+The surface of the foil is blackened therefore it is approximated as a black body emitter. The photons emitted by a BB source within the camera integration time can be modelled as \autoref{eq:BBphotons1}
+
+
+\begin{equation}
+{\Phi}_p (T) = \epsilon i \int_{ {\lambda}_1 }^{ {\lambda}_2 } {\frac{2 \pi c } { {\lambda}^4 } \frac {1} { e^{\frac {hc} {\lambda k T}} -1} {d \lambda} }
+\label{eq:BBphotons1}
+\end{equation}
+
+with $\epsilon$ emissivity, $i$ integration time, $\lambda$ wavelength and $\lambda_1-\lambda_2$ the range allowed by the camera filter and $T$ the surface temperature.
+To simplify the calculations an interpolator is built such that
+
+\begin{equation}
+\frac {{\Phi}_p (T)} {T} = \alpha (T) , T = {\alpha}_r ({\Phi}_p)
+\label{eq:BBphotons2}
+\end{equation}
+
+The number of photons reaching the camera are going to be proportional to the number of emitted photon, with an additional offset due to thermal photons originated from other solid surfaces and the air. This offset will be approximately constant because it will not depend on the surface temperature observed by the camera.
+The presence of the view port between camera and the source of BB radiation will decrease the number of thermal photons reaching the camera and potentially modifies the constant offset.
+Assuming that the number of counts is proportional to the number of photons, and that this does not depends on the photon wavelength, the number of camera counts can be expressed as:
+
+\begin{equation}
+C = a_1 \cdot a_3 \cdot {\Phi}_p (T) + a_2 + a_4
+\label{eq:BBphotons3}
+\end{equation}
+
+with $a_1\in[0,\infty]$ and $a_2\in[-\infty,\infty]$ the proportional and constant component for the counts without the window and $a_3\in[0,1]$ and $a_4\in[-\infty,\infty]$ the modifiers for the window case. $T_0$ and $C_0$ are the temperature and counts relative to the initial conditions at the beginning of the shot.
+In order to calculate all 4 coefficients 2 temperature ramps are required, one with and one without window. When changing the temperature of the BB source the camera counts have to be monitored to make sure to collect the data only after they have stabilised.
+The counts/temperature curves obtained are then fit to return the coefficients. The power absorbed by the IRVB foil is obtained using the temperature increase over the profile before the pulse ($T_0$ and $C_0$), so the constant offset from the calibration does not play any role in the results or it’s uncertainty.
+Once $a_1 \cdot a_3$ is determined the temperature is calculated as:
+
+\begin{equation}
+T = {\alpha}_r ( {\Phi}_p(T)) = {\alpha}_r \left (\frac {C - a_2 - a_4} {a_1 \cdot a_3} \right ) = {\alpha}_r \left (\frac {C - C_0} {a_1 \cdot a_3} + {\Phi}_p (T_0) \right )
+\label{eq:BBphotons4}
+\end{equation}
+
+At this stage the temperature is binned appropriately to increase signal to noise. In most circumstances it was adopted a binning of 12-14 temporal steps and 3x3 pixels.
+
+\subsection{Foil calibration}
+The foil thermal response is dictated by heat transport having as source the radiated power from the plasma and as sinks its black body radiation and conduction to the frame. The foil is very thin and therefore 2D heat transport can safely be considered instead of 3D.  gives the power absorbed by the foil based on its temperature
+
+\begin{equation}
+\begin{split}
+P_{foil}= P_{\frac {\partial T} {\partial t}}+P_{\Delta T}+P_{BB}\\
+P_{\frac {\partial T} {\partial t}}=k \: t_f \: \dfrac{1}{\kappa} \dfrac{dT}{dt} \\
+ P_{\Delta T} = -k \: t_f \:  \left( \dfrac{\partial^2 T}{\partial x^2} + \dfrac{\partial^2 T}{\partial y^2} \right) \approx -k \: t_f \: L \cdot T \\ P_{BB} = 2 \: \varepsilon \: \sigma_{SB} \: (T^4 - T_0^4)
+\label{eq:heat2d}
+\end{split}
+\end{equation}
+
+with $k$ thermal conductivity, $t_f$  thickness, $\kappa$ thermal diffusivity, $\varepsilon$ black body emissivity and $\sigma_{SB}$ the Stefan-Boltzmann constant. $L$ is the matrix containing the coefficients to build the temperature Laplacian via the dot product. This is built as the sum of the second order central finite difference in all directions.
+
+The uncertainty on the temporal variation, diffusion and radiation terms of the heat equation can be calculated with \autoref{eq:uncert1}, \ref{eq:uncert2} and \ref{eq:uncert3} respectively
+\begin{equation}
+{\sigma }_{ \frac {\partial T} {\partial t}} = \frac 1 {dt}  \sqrt{ \left ( \frac {{\sigma }_{C_{i+1}}} { a_1 a_3 \alpha(T_{i+1}) } \right )^2 + \left ( \frac {{\sigma }_{C_{i-1}}} { a_1 a_3 \alpha(T_{i-1}) } \right )^2 + \left [ \left ( T_{i+1}-T_{i-1} \right ) \frac {{\sigma }_{a_1 a_3}} {a_1 a_3} \right ]^2 } 
+\label{eq:uncert1}
+\end{equation}
+\begin{equation}
+{\sigma }_{ \Delta T} = \frac {1} {dx^2} \sqrt{ L^2 \cdot \left[  \left(  \frac {{\sigma }_{C_i}} { a_1 a_3 \alpha(T_i) } \right)^2 + \left( \frac {{\sigma }_{C_0}} { a_1 a_3 \alpha(T_0) } \right)^2 + \left( ({T_i -T_0}) \frac {{\sigma }_{a_1 a_3}} {a_1 a_3} \right)^2 \right] } 
+\label{eq:uncert2}
+\end{equation}\begin{equation}
+\begin{split}
+{\sigma }_{T_i} = \frac 1 {\alpha(T_i)} \sqrt{ \frac {({\sigma }_{C_i}^2 + {\sigma }_{C_0}^2 )} { (a_1 a_3)^2 } + \left [ \left (\frac {C_i -C_0} {a_1 a_3} \right ) \frac {{\sigma }_{a_1 a_3}} {a_1 a_3} \right ]^2  + (\alpha(T_i) {\sigma }_{T_0})^2 } \\ {\sigma }_{ BB} = 4 \sqrt{ ({T_i}^3 {\sigma }_{T_i})^2 + ({T_0}^3 {\sigma }_{T_0})^2 }
+\label{eq:uncert3}
+\end{split}
+\end{equation}
+
+
+\subsection{Tomography}
+Considering the radiation from every voxel of the plasma is assumed to be emitted uniformly and the opacity of the plasma itself is neglected \hl{[reference]} the relation between emissivity map and power to every pixel of the foil is linear and can be summarised in the matrix product
+
+\begin{equation}
+Gm=q
+\label{eq:gmq}
+\end{equation}
+
+Scanning the volume with an emitter of known emissivity it is possible to determine all the elements of the matrix G, the geometry matrix. For this work this was done with the Monte Carlo ray tracing code CHERAB. To obtain the emissivity map from the power on the foil the geometry matrix must be inverted, but this is an ill-posed problem. A problem is well posed if a solution exists, it is unique and it has small changes for small changes of the inputs. \cite{Hansen1998} In the case of tomographic inversions very often the last condition fails. \cite{Hansen2010} This means additional informations have to be added in order to find a solution. In the most famous case of tomographic inversion, MRI scans, the source and detector are moved around the volume of interest as to collect information from different angles. This decreases the indetermination of the problem and a solution can be found. In our case neither observer of observed can be moved so additional information are required for a stable solution.
+\subsection{literature}
+\subsubsection{SVG}
+\subsubsection{SART}
+\subsubsection{forward minimisation residuals (does it exist? Need to check with Chris)}
+\subsection{regularisation}
+\subsubsection{limit of laplacian}
+\subsubsection{eigenvalues truncation}
+\subsubsection{regularisation parameter}
+\subsection{novelty (is it?): bayesian approach + regularization
+benefits, comparison with other methods}
+\subsection{MASTU implementation
+restrictions (FOV, divertor), artefacts corrections (non negativity, others), uncertainty}
+
+\section{Results}
+\subsection{XPR/radiation location and confinement}
+\subsection{XPR/detachment and power balance}
+\subsection{radiation front location and analytic models}
+\subsection{detachment and configuration (CD/SXD)}
+CD more easily attached, need to compare 2 similar cases and radiation
+different inner/outer detachment?
+\subsection{radiation location and other metric of detachment}
+radiation exits the divertor together with ionisation -> hydrogen radiation dominant
+with HFS fuelling tot rad peaks in inner separatrix, res bolo at x-point (difference blackened/non blackened)
+\subsection{XPR and ELMs}
+already found shots that start attached with ELMs and they stop with detachment, need to compare with radiation
