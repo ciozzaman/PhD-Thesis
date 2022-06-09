@@ -151,12 +151,12 @@ For this type of discharge the radiator close to the X-point appears when detach
 %\hl{poloidal asymmetry, pedestal flattening, loss confinement}
 
 
-The X-point radiator (XPR) is a region of steep temperature gradient, where the temperature goes from that of the hot upstream plasma from the core to the cold region where ion / neutral interactions dominate. The presence of such a thing at or inside the separatrix can lead to confinement degradation. In this context what is referred as confinement H98 is the ratio of the actual energy confinement time $\tau_{th}$ over a reference. The reference is a confinement time from a scaling law obtained fitting the confinement time of many tokamak experiments in a certain operating mode. For ELMy H-mode the scaling law mostly used is the ITER Physics Basis (IPB) 98(y,2).\cite{Doyle2007} For L-mode the ITERL-97P scaling can be used. \cite{Kaye1997} The scalings are given by \autoref{eq:h98} and \ref{eq:l97}.
+The X-point radiator (XPR) is a region of steep temperature gradient, where the temperature goes from that of the hot upstream plasma from the core to the cold region where ion / neutral interactions dominate. The presence of such a thing at or inside the separatrix can lead to confinement degradation. In this context what is referred as confinement H98 is the ratio of the actual energy confinement time $\tau_{th}$ over a reference. The reference is a confinement time from a scaling law obtained fitting the confinement time of many tokamak experiments in a certain operating mode. For ELMy H-mode the scaling law mostly used is the ITER Physics Basis (IPB) 98(y,2).\cite{Doyle2007} For L-mode the ITERL-97P scaling can be used. \cite{Kaye1997} The scalings are given by \autoref{eq:h98y2} and \ref{eq:l97}. For spherical tokamaks an H-mode \cite{Kaye2006} and MAST L-mode \cite{Kaye2021} scaling are given in \autoref{eq:HST}, \ref{eq:LST} respectively.
 
 
 \begin{equation}
 { H }_{ 98 }={\tau }_{ th }/{\tau }_{ th,98y2 } \; , \; {\tau }_{ th,98y2 }=0.0562 {{ I }_{ P }}^{ 0.93} {{ B }_{ t }}^{ 0.15} {{ n }_{ 19 }}^{ 0.41} {{ P }_{ L }}^{ -0.69} {{ R }_{  }}^{ 1.97} {{ \varepsilon  }_{  }}^{ 0.58} {{ \kappa  }_{ a }}^{ 0.78} {{ M }_{  }}^{ 0.19}
-\label{eq:h98}
+\label{eq:h98y2}
 \end{equation}
 
 \begin{equation}
@@ -164,7 +164,18 @@ The X-point radiator (XPR) is a region of steep temperature gradient, where the 
 \label{eq:l97}
 \end{equation}
 
-with $I_P$ plasma current, $B_t$ toroidal magnetic field, $n^{19}$ electron density in units of $10^{19} \#/m^3$, $P_L=P-dW/dt$ power loss with $P$ heating power and $W$ stored energy, $R$ major radius, $a$ minor radious, $\varepsilon=a/R$ inverse aspect ratio, $\kappa _a$ elongation, $M$ ion mass number.
+
+\begin{equation}
+{ H }_{ ST }={\tau }_{ th }/{\tau }_{ th,HST } \; , \; {\tau }_{ th,HST }=0.066 {{ I }_{ P }}^{ 0.53} {{ B }_{ t }}^{ 1.05} {{ n }_{ 19 }}^{ 0.65} {{ P }_{ heat }}^{ -0.58} {{ R }_{  }}^{ 2.66} {{ \kappa  }_{ a }}^{ 0.78}
+\label{eq:HST}
+\end{equation}
+
+\begin{equation}
+{ L }_{ ST }={\tau }_{ th }/{\tau }_{ th,LST } \; , \; {\tau }_{ th,LST }=0.153 {{ I }_{ P }}^{ 1.01} {{ B }_{ t }}^{ 0.7} {{ n }_{ 19 }}^{ -0.07} {{ P }_{ L }}^{ -0.37}
+\label{eq:LST}
+\end{equation}
+
+With $I_P$ plasma current in $MA$, $B_t$ toroidal magnetic field in $T$, $n^{19}$ averaged electron density in units of $10^{19} \#/m^3$, $P_L=P-dW/dt$ power loss in $MW$ with $P$ heating power and $W$ stored energy, $R$ major radius, $a$ minor radious, $\varepsilon=a/R$ inverse aspect ratio, $\kappa _a$ elongation, $M$ ion mass number in $amu$.
 It is possible to calculate the energy confinement time from magnetic coils measurements and the energy transferred to the plasma as heating ($P_{heat}$). $\tau_{th}$ is defined by 
 
 \begin{equation}
@@ -175,7 +186,7 @@ It is possible to calculate the energy confinement time from magnetic coils meas
 \end{equation}
 
 
-With $V$ plasma volume, $\langle p \rangle$ volume-averaged plasma kinetic pressure, $I_p$ plasma current, ${{ \beta }_{ p }}$ poloidal beta, $B_p$ poloidal magnetic field, $a$ minor radius, $P_{ohmic}$, $P_{NBI}$, $P_{RF}$, power transferred to the plasma by ohmic heating, neutral beam injector and radio frequency respectively. \cite{SalarElahi2010,Fallis2013} The confinement loss is usually done comparing before and after the appearance of the X-point radiator, or with a series of discharges in similar conditions but without and without X-point radiator.
+With $V$ plasma volume, $\langle p \rangle$ volume-averaged plasma kinetic pressure, ${{ \beta }_{ p }}$ poloidal beta, $B_p$ poloidal magnetic field, $a$ minor radius, $P_{ohmic}$, $P_{NBI}$, $P_{RF}$, power transferred to the plasma by ohmic heating, neutral beam injector and radio frequency respectively. \cite{SalarElahi2010,Fallis2013} The confinement loss is usually done comparing before and after the appearance of the X-point radiator, or with a series of discharges in similar conditions but without and without X-point radiator.
 The confinement degradation can be due to the direct cooling caused by the cold region (e.g. poloidal temperature gradients to drive power to that location \cite{Lipschultz1998} ) or to easier penetration of impurities in the core [\cite{Lipschultz2016} and references therein]. The degradation significantly affects the outer part of the core region with significant reduction of temperature, pressure and an increase of density. \cite{Kallenbach2015a}  It was found on some experiments that the inner core (ratio of poloidal magnetic flux over poloidal magnetic flux at the separatrix $ \rho _{pol}<0,8-0,5 $) is only marginally effected. [\cite{Reinke2013} and reference therein]It is therefore suggested that the gradients lost on the pedestal region could be recovered in a portion of plasma $0,8< \rho _{pol}<0,95$. \cite{Reimold2015}
 
 The X-point radiator will also have the effect of radiating a substantial fraction ($75-90\%$ of the heating power achieved \cite{Bernert2017}) of the total $ \alpha $ particles / heating power out of the separatrix and could cause the H-L transition. This is anyway not a major risk for ITER and larger machines, because the power crossing the separatrix is expected to be significantly larger that the threshold requirement. It has been in fact considered to seed a higher-Z impurity in the plasma to enhance core radiation (radiative mantle) and lower the power needed to be exhausted through the separatrix to about the minimum for the L-H transition. Then a lower-Z impurity will be fed to radiate in the divertor. [\cite{Kallenbach2015a,Reinke2013} and reference therein]
