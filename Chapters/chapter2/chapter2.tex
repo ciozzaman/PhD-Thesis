@@ -3,6 +3,12 @@
 detachment, power balance, radiation front location, XPR literature on MASTU
 
 
+As explained before the location of the radiating regions can have a significant impact on the core plasma\cite{Reimold2015}, it is important, therefore, to well characterise the power balance and radiated power profile in current machines to understand the stability and performance of strongly radiating plasmas and support predictions for future devices. 
+Key diagnostics are bolometers that usually operate by exposing a thin foil to plasma radiation and by monitoring its temperature. The subject of this chapter is a prototype infrared video bolometer (IRVB) installed on the Mega Ampere Spherical Tokamak Upgrade (MAST-U) to study x-point and divertor radiation.
+The IRVB concept has previously been demonstrated on tokamaks (Alcator C-Mod\cite{Reinke2018a}, HL-2A\cite{Gao2013}, JT-60U\cite{Peterson2007}, KSTAR\cite{Jang2018,Peterson2018}) and stellarators (LHD\cite{Peterson2000,PETERSON2010}, Heliotron J\cite{Miyashita2021}) and its basic operating principles are well known. A thin foil is exposed to the plasma radiation through a pinhole aperture so that each point of the foil corresponds to a different line of sight (LOS). The foil heats up according to the radiation it receives and the change in foil temperature is measured via an infrared camera. The advantage, relative to discrete resistive bolometer sensors\cite{Mast1991}, lies in the very large number of LOS accessible with a single IRVB device and the capability to image very large or small portions of the plasma based on foil and pinhole relative position. The foil is also a completely passive component, potentially better resistant to neutron irradiation therefore more reactor relevant, than in a resistive bolometer, where on the foil is glued the active resistors used to measure its temperature. The downsides are that the physics of thermal diffusion needs to be considered which introduces a limit in the time resolution of the diagnostic. 
+The IRVB technique is not new, but the current application in MAST-U represents the first successful implementation on a spherical tokamak. Additionally, in most cases, the IRVB is tuned to image the core plasma, while in this case the aim is to measure the radiated power profile in the vicinity of the lower x-point with high resolution. This choice also comes from the need to complement the MAST-U resistive bolometry system with a radiated power diagnostic with high resolution in a region of the plasma characterised by sharp variations.
+This chapter will detail the considerations that dictated this prototype design. The entire calibration procedure and the lessons learned from this implementation will also be presented. It will be shown how the line integrated data was analysed to extract the emissivity profile and early results from the first experimental campaign in MAST-U (MU01).
+
 
 \section{IRVB concept}
 The IRVB is the diagnostic that was developed as part of the PhD project and will be used to gain scientific understanding.
@@ -22,19 +28,12 @@ The small thickness of the foil allows to treat the heat diffusion as a 2D probl
 It is important that the foil is blackened to reduce reflection of lower wavelengths, but this introduces the an interface between materials that might impede thermal transfer. The coating could, depending on the technique, be deposited non uniformly on the foil, adding to the non uniformity already present on the foil. The coating too must be stable and vacuum compatible. \cite{Mukai2016}
 The infra red camera must be positioned as close as possible to the foil in order to increase the resolution and signal. If the neutron flux is significant or there are mechanical constraints mirrors or periscopes must be used. All apparatus must be suitable for infra red radiation and properly coated.
 It has great importance in the design the positioning and size of the pinhole with respect of the foil. The distance and position will impact the field of view of the diagnostic, its spatial resolution and the radiation intensity. The size of the pinhole will impact the intensity and the resolution.\\
-\hl{Previous implementations}
+The IRVB it's not a new technique and it was previously deployed in LHD, Alcator C-Mod, HL-2A, JT-60U devices (see for example \cite{Peterson2000,PETERSON2010,Reinke2018a,Gao2013,Peterson2007}) but this represents the first successful implementation on a spherical tokamak. Additionally in most cases the IRVB is tuned to image the core plasma, while in this case the aim is to measure the radiated power profile in the vicinity of the lower x-point with high resolution.
 
 
-\section{MASTU implementation}
-
-The IRVB system developed with this PhD project is a prototype designed with the aim to prove this technology in spherical tokamaks, first time this is done, measuring the radiation profile around the x-point. The design, shown in \autoref{fig:IRVB_components} is based on work previously done by M. L. Reinke for an IRVB system for NSTX-U.\cite{VanEden2016} The pinhole is located left and below the projection of the centre of the foil toward the center column, to aim the field of view at the lower x-point. The positioning of the IRVB tube can be seen in \autoref{fig:IRVB_location}. An approximate view inside MASTU as if the IRVB operates as a camera, to show the features and obstructions, is shown in \autoref{fig:calcam}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/IRVB2.png}
-	\caption{IRVB components overview. To change pinhole size and foil pinhole distance the tube must be removed while the camera is always accessible. Adapted from \cite{Reinke2017a}}
-	\label{fig:IRVB_components}
-\end{figure}
+\section{MASTU geometry design}\label{MASTU geometry design}
+The IRVB design is based on work previously done by M. L. Reinke for an IRVB system for NSTX-U \cite{VanEden2016} and it will be here shown how the design was adapted to the specific geometry of MASTU.
+The vertical location of the IRVB was dictated by the available ports on the machine. The one assigned to the IRVB is HE11-2, located in sector 11 and centered ad 0.7m below the midplane. The pinhole was placed as close as possible to the plasma to increase the available signal while being protected by the surrounding structures and safely outside the SOL, returning a radius of the pinhole of 1.55m. The resulting positioning of the IRVB tube can be seen in \autoref{fig:IRVB_location}. 
 
 \begin{figure}
 	\centering
@@ -43,6 +42,111 @@ The IRVB system developed with this PhD project is a prototype designed with the
 	\label{fig:IRVB_location}
 \end{figure}
 
+With this constrains the pinhole was located off centre with respect to the foil so that the the line of sight starting from the x-point in the tangential view of the plasma would land in the centre of the foil. From this basic configuration 3 possible pinhole diameter sizes have been evaluated in order to tune the signal strength: 4, 6, 8 mm. In order to tune the magnification of the system 3 possible lengths of the bracket that connects the foil assembly to the pinhole one (the stand off) have been considered: 45, 60, 75 mm. An exploded view of the components is shown in \autoref{fig:IRVB_components}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/IRVB2.png}
+	\caption{IRVB components overview. To change pinhole size and foil pinhole distance the tube must be removed while the camera is always accessible. Adapted from \cite{Reinke2017a}}
+	\label{fig:IRVB_components}
+\end{figure}
+
+The power density on the foil was estimated with CHERAB \cite{C.GiroudA.MeakinsM.CarrA.Baciero2018}\cite{Carr2017}\cite{A.MeakinsCarrM.2017}, a code that can perform ray tracing with the full geometry of MAST-U.  Based on the aforementioned design for NSTX-U it was expected a good Signal to Noise Ratio (SNR) for a power density on the foil above $100W/m^2$ and a noise floor of about $5W/m^2$. \cite{Reinke2018} The result from the simulations for the 9 combination of configurations is shown in \autoref{fig:cherab1}.
+
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.3\textwidth}
+         \centering
+         \includegraphics[trim={70 0 125 0},clip,width=\textwidth]{Chapters/chapter2/figs/4_45.png}
+         \caption{pinhole 4mm/stand-off 45mm}
+         \label{fig:4_45}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.3\textwidth}
+         \centering
+         \includegraphics[trim={70 0 125 0},clip,width=\textwidth]{Chapters/chapter2/figs/4_60.png}
+         \caption{$4/60$}
+         \label{fig:4_60}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.325\textwidth}
+         \centering
+         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/4_75.png}
+         \caption{$4/75$}
+         \label{fig:$4_75$}
+     \end{subfigure}
+     \begin{subfigure}{0.3\textwidth}
+         \centering
+         \includegraphics[trim={70 0 110 0},clip,width=\textwidth]{Chapters/chapter2/figs/6_45.png}
+         \caption{$6/45$}
+         \label{fig:6_45}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.3\textwidth}
+         \centering
+         \includegraphics[trim={70 0 125 0},clip,width=\textwidth]{Chapters/chapter2/figs/6_60.png}
+         \caption{$6/60$}
+         \label{fig:6_60}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.325\textwidth}
+         \centering
+         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/6_75.png}
+         \caption{$6/75$}
+         \label{fig:6_75}
+     \end{subfigure}
+     \begin{subfigure}{0.3\textwidth}
+         \centering
+         \includegraphics[trim={70 0 110 0},clip,width=\textwidth]{Chapters/chapter2/figs/8_45.png}
+         \caption{$8/45$}
+         \label{fig:8_45}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.3\textwidth}
+         \centering
+         \includegraphics[trim={70 0 110 0},clip,width=\textwidth]{Chapters/chapter2/figs/8_60.png}
+         \caption{$8/60$}
+         \label{fig:8_60}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.325\textwidth}
+         \centering
+         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/8_75.png}
+         \caption{$8/75$}
+         \label{fig:8_75}
+     \end{subfigure}
+
+    \caption{Radiation power on the foil from a homogeneous XPR of radius 8cm emitting a total of 0,5MW}
+    \label{fig:cherab1}
+\end{figure}
+
+The power distribution on the foil was also simulated in the case of a core and divertor region homogeneously filled with emitter. See \autoref{fig:cherab2}.
+
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.4\textwidth}
+         \centering
+         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/6_45_all.png}
+         \caption{pinhole 6mm/stand-off 45mm}
+         \label{fig:6_45_all}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}{0.50\textwidth}
+         \centering
+         \includegraphics[trim={130 0 150 0},clip,width=\textwidth]{Chapters/chapter2/figs/6_60_all.png}
+         \caption{$6/60$}
+         \label{fig:6_60_all}
+     \end{subfigure}
+
+    \caption{Radiation power on foil with with core and divertor regions emitting homogeneously $50W/m^2$}
+    \label{fig:cherab2}
+\end{figure}
+
+A bottom left region is clearly visible where no radiation can arrive. This could have been helpful for the prototype phase, because that area could have been used as a reference where the power is zero.
+For this reason it has been decided to adopt the stand off 45mm. This allows for an intense enough radiation from the X-point so the smaller pinhole, that allows for a better resolution, 4mm, was selected.
+
+An approximate view inside MASTU as if the IRVB operates as a camera, to show the features and obstructions, is shown in \autoref{fig:calcam}.
+
 \begin{figure}
 	\centering
 	\includegraphics[trim={30 10 450 85},clip,width=0.6\linewidth]{Chapters/chapter2/figs/calcam.png}
@@ -50,24 +154,18 @@ The IRVB system developed with this PhD project is a prototype designed with the
 	\label{fig:calcam}
 \end{figure}
 
-The foil is a 2.5$\mu$m thick platinum foil. The thickness is optimised to stop photons with energies up to 8.2keV. \cite{PETERSON2010} The foil and its support frame have been spray blackened on both sides with Aerodag® G Graphite Aerosol and calibrated with a procedure analogous to the one exposed in \cite{Itomi2014}. The layer of graphite helps to absorb radiation in the visible range avoiding reflection and even if thicker that the platinum layer it is thermally less relevant. \cite{VanEden2018} The tube where the foil is installed is slightly larger than the frame and extends from the the vacuum chamber wall to a position close to the plasma, but still safely outside the SOL. The camera, a FLIR SC7500, images the foil through a ZnS view port with anti reflection coating and is bolted to the tube. The camera is equipped with a 2.5-5$\mu$m filter and was selected among others as the same model was adopted for other diagnostics in MASTU and the same acquisition software could potentially be developed.
-The pinhole and stand off definition was made based on the expected radiated power from the plasma estimated with CHERAB \cite{C.GiroudA.MeakinsM.CarrA.Baciero2018}\cite{Carr2017}\cite{A.MeakinsCarrM.2017}, a code that can perform ray tracing with the full geometry of MAST-U.  Based on the aforementioned design for NSTX-U it was expected a good Signal to Noise Ratio (SNR) for a power density on the foil above $100W/m^2$ and a noise floor of about $5W/m^2$. \cite{Reinke2018} 
+\section{Sensing components design}\label{Sensing components design}
 
-The tube was installed on MAST-U in November 2018 while all parts outside the vacuum vessel by early 2021. The calibration of the system was performed part in 2018 and part after the end of the first experimental campaign in late 2021. More detail on design considerations in \autoref{MASTUdesign}.
+The foil is a 2.5$\mu$m thick platinum foil. The thickness is optimised to stop photons with energies up to 8.2keV. \cite{PETERSON2010,Gullikson2022} The foil and its support frame have been spray blackened on both sides with Aerodag® G Graphite Aerosol and calibrated with a procedure analogous to the one exposed in \cite{Itomi2014}. The layer of graphite helps to absorb radiation in the visible range avoiding reflection and even if of a similar thickness of the platinum layer it should be thermally irrelevant. \cite{VanEden2018} The tube where the foil is installed is slightly larger than the frame and extends from the the vacuum chamber wall to a position close to the plasma, but still safely outside the SOL. The camera, a FLIR SC7500, images the foil through a ZnS view port with anti reflection coating and is bolted to the tube. The camera is equipped with a 2.5-5$\mu$m filter and was selected among others as the same model was adopted for other diagnostics in MASTU and the same acquisition software could potentially be developed.
 
 
-\section{Numerical technique}
-To obtain the total radiated power profile a number of steps must be followed. \autoref{fig:numerical_path} shows in the bottom section the necessary steps.
+The IRVB tube was installed on MAST-U in November 2018 while all parts outside the vacuum vessel by early 2021. The calibration of the system was performed part in 2018 and part after the end of the first experimental campaign in late 2021.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/numerical_path.png}
-	\caption{Path for forward modeling, left to right, and for experimental data analysis, right to left.}
-	\label{fig:numerical_path}
-\end{figure}
-I will now illustrate each step. More detail on the calibration procedure to obtain the necessary coefficients is provided in \autoref{IRVBcalibration}.
 
-\subsection{Temperature calibration}
+\section{System calibration}\label{System calibration}
+Before use the diagnostic has to be characterised, meaning one has to determine the transfer function between input and output of each component. The components of the system that have to be characterised are: the IR camera, the foil and the geometry. For the first two laboratory tests can be performed while the third could only be verified during operation. I will here detail each calibration performed.
+
+\subsection{Counts to temperature model}
 The temperature calibration is the procedure used to convert the camera row data from counts to temperature. It involves defining the mathematical model for the conversion and finding the coefficients required. Once defined it can be applied to MASTU data to obtain the IRVB foil temperature.
 The surface of the foil is approximated as a black body emitter. The photons emitted by a BB source within the camera integration time can be modelled as \autoref{eq:BBphotons1}
 
@@ -106,7 +204,46 @@ T = {\alpha}_r ( {\Phi}_p(T)) = {\alpha}_r \left (\frac {C - a_2 - a_4} {a_1 \cd
 
 At this stage the temperature is binned appropriately to increase signal to noise. In most circumstances it was adopted a binning of 12-14 temporal steps and 3x3 pixels.
 
-\subsection{Foil calibration}
+\subsection{Temperature calibration}
+In order to test every pixel of the camera with the limited size of the BB source available the source was taken as close as possible to the view port making it out of focus. This could be done as the whole surface of the BB cavity emits the same amount of radiation isotropically. This was verified by performing 3 separate calibrations: camera and BB source as close as possible ($\approx 10cm$, some room was necessary for the window in between the two), as far as possible (with the whole field of view still inside the source, $\approx 18cm$) and with the source in focus ($\approx 65.7cm$). It was found that the effect on the a1 coefficient is negligible.
+The geometry of the calibration is represented in \autoref{fig:BBcalib} .
+
+\begin{figure}
+	\centering
+	\includegraphics[trim={750 300 0 1200},clip,width=\linewidth]{Chapters/chapter2/figs/calib_schematics.png}
+	\caption{Schematic of the calibration setup. The plane in focus correspond to the distance at which the IRVB foil is. The window is at the same distance from the camera as when installed on MASTU}
+	\label{fig:BBcalib}
+\end{figure}
+
+The results of the calibration are shown in \autoref{fig:BBcaliba1}, \ref{fig:BBcaliba3} and \ref{fig:BBcaliba1a3SNR}. As expected, most of the flat offset is in $a_2$ while only a minor component in $a_4$. The $a_1$ coefficient seems completely not effected by the narcissus effect. Conversely the corrective factor $a_3$ seems dominated by it, while still being $>0.95$ across the thole field of view with a relative variation less then half of $a_1$. The $a_2$ and $a_4$ coefficients are irrelevant as are not used in the temperature and power calculations.
+
+\begin{figure}
+	\centering
+	\includegraphics[trim={140 0 120 0},clip,width=\linewidth]{Chapters/chapter2/figs/calib_a1.png}
+	\caption{$a_1$ coefficient obtained via calibration with BB source}
+	\label{fig:BBcaliba1}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[trim={140 0 120 0},clip,width=\linewidth]{Chapters/chapter2/figs/calib_a3.png}
+	\caption{$a_3$ coefficient obtained via calibration with BB source}
+	\label{fig:BBcaliba3}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[trim={140 0 120 0},clip,width=\linewidth]{Chapters/chapter2/figs/calib_a1a3SNR.png}
+	\caption{$a_1 a_3 / \sigma_{a_1 a_3}$ obtained via calibration with BB source}
+	\label{fig:BBcaliba1a3SNR}
+\end{figure}
+
+An alternative method for temperature calibration was also tested. A Solfadir non uniformity calibration (NUC) plate, was pre-heated or cooled to a set temperature and let transition to room temperature. The NUC plate is large enough to fill the entire field of view and while in focus. Its surface is such to have an emissivity close to 1. The temperature of the plate is recorded and various samples are collected with the IR camera while the plate temperature approaches ambient. The data is then fit with a low order polynomial curve. This procedure introduces 2 issues:
+\begin{itemize}
+    \item the NUC plate is cooled or heated by the air via conduction, convection and BB radiation. This causes the plate to not have a homogeneous temperature. During these tests it was estimated that the temperature non uniformity reached ~0.4K, and up to 0.1K in the -5/+5K temperature range around room temperature. This is of course not ideal for the IRVB, as the measurement of the power absorbed by the foil relies on very small temperature differences
+    \item The temperature/counts correlation does not rely on to a physical model, but it is a simple polynomial that will try to match the real physical dependency behind the IR measurements. The physics of a BB source is fairly simple, and the only factors are the wavelength range and emissivity. The camera could potentially have a different sensitivity for different photon energy, but this is usually neglected given the small wavelength range allowed by the filter ($2,5-5\mu m$).
+\end{itemize}
+For these reasons this method was later abandoned.
+
+\subsection{Foil model}
 The foil thermal response is dictated by heat transport having as source the radiated power from the plasma and as sinks its black body radiation and conduction to the frame. The foil is very thin and therefore 2D heat transport can safely be considered instead of 3D. \autoref{eq:heat2d} shows how to calculate the power absorbed by the foil based on its temperature.
 
 \begin{equation}
@@ -118,7 +255,7 @@ P_{\frac {\partial T} {\partial t}}=k \: t_f \: \dfrac{1}{\kappa} \dfrac{dT}{dt}
 \end{split}
 \end{equation}
 
-with $k$ thermal conductivity, $t_f$  thickness, $\kappa$ thermal diffusivity, $\varepsilon$ black body emissivity and $\sigma_{SB}$ the Stefan-Boltzmann constant. $L$ is the matrix containing the coefficients to build the temperature Laplacian via the dot product. It is built such that by dot product with the temperature it returns the sum of the second order central finite difference in all directions.
+with $k$ thermal conductivity, $t_f$  thickness, $\kappa$ thermal diffusivity, $\varepsilon$ black body emissivity and $\sigma_{SB}$ the Stefan-Boltzmann constant. $L$ is the matrix containing the coefficients to build the temperature Laplacian via the dot product. It is built such that by dot product with the temperature it returns the sum of the second order central finite difference in all directions. In the Laplacian matrix the elements corresponding to the derivate in the diagonal direction are divided by 2, to account for the increase in distance.
 
 The uncertainty on the temporal variation, diffusion and radiation terms of the heat equation can be calculated with \autoref{eq:uncert1}, \ref{eq:uncert2} and \ref{eq:uncert3} respectively
 \begin{equation}
@@ -136,25 +273,63 @@ The uncertainty on the temporal variation, diffusion and radiation terms of the 
 \end{equation}
 
 
-\subsection{Tomography}
+\subsection{Foil calibration}
+To calibrate the foil $t_f$ thickness, $\kappa$ thermal diffusivity and $\varepsilon$ black body emissivity must be determined. A set of spatially resolved parameters was supplied together with the foil of which the average correspond to $\epsilon=0.85+/-0.04, t_f=1.29+/-0.17 \mu m$ with nominal platinum $\kappa=2.5\;10^{-5}m^2/s$. There are different ways to find the foil parameters, see as reference \cite{Itomi2014,Cernuschi2001,Mukai2016}. The method of choice was to shine a pulsed laser \hl{(make and model)} of known intensity to the foil through the pinhole while the whole tube was maintained in the vacuum. The temperature of the foil was monitored with the IR camera. The laser intensity, frequency and focus was varied: with slow pulses the time variation component tends to become irrelevant such that only black body and diffusion remain. With a defocused laser the temperature increase is low and the spatial distribution slowly varying, leaving the black body radiation as the major contributor. with a fast pulsed laser the time dependent component is dominant. The power on the foil determined with \autoref{eq:heat2d} is then compared to the known input. The transmission of the vacuum window on the laser side was measured at $93.3\%$ and taken into account. The fit returned the properties: $\epsilon=1, t_f=2.05 \mu m, \kappa=1.03\;10^{-5}m^2/s$. These values were assumed uniform and used in processing MASTU data, with as uncertainties the variability from the spatially resolved parameters. This result is consistent with values found prior to the installation on NSTX-U. \cite{Reinke2018}
+
+\subsection{Geometry validation}
+
+\hl{TO DO. section in which I show all the separate clues that we used to say that the geometry is indeed what we expect.}
+
+\section{Tomography}
+Once the system is fully characterised it is possible to calculate the power absorbed by each region of the foil. With a Tomographic inversion is then possible to relate the absorbed power to the local emissivity of the plasma. A schematic of the entire process is shown in \autoref{fig:numerical_path}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Chapters/chapter2/figs/numerical_path.png}
+	\caption{Path for forward modeling, left to right, and for experimental data analysis, right to left.}
+	\label{fig:numerical_path}
+\end{figure}
+
 Assuming the radiation from every voxel of the plasma is assumed to be emitted uniformly and the opacity of the plasma itself is neglected \hl{[reference]} the relation between emissivity map $m$ and power to every pixel of the foil $q$ is linear and can be summarised in the matrix product
 
 \begin{equation}
-Gm=q
+\bm{G}m=q
 \label{eq:gmq}
 \end{equation}
 
-Scanning the voxels with a known emitter it is possible to determine all the elements of the matrix $G$, the geometry matrix. For this work this was done with the Monte Carlo ray tracing code CHERAB. To obtain the emissivity map from the power on the foil the geometry matrix must be inverted, but this is an ill-posed problem. A problem is well posed if a solution exists, it is unique and it has small changes for small changes of the inputs. \cite{Hansen1998} In the case of tomographic inversions often the last condition fails. \cite{Hansen2010} This means additional information have to be added in order to find a solution. In the most famous case of tomographic inversion, MRI scans, the source and detector are moved around the volume of interest as to collect information from different angles. This decreases the under-determination of the problem and a solution can be found. In our case neither observer or observed can be moved so additional information are required for a stable solution.
-\subsection{Literature}
-\subsubsection{Truncated singular value decomposition}
-The truncated singular value decomposition (SVD) method for tomographic inversion relies of the direct inversion of the geometry matrix. The inversion is performed by finding the eighenvalues and eighenvectors associated with the geometry matrix. The matrix inversion can often be numerically performed, but the smaller eighenvalues greatly enhance the effect of any noise in the measured data and even numerical rounding errors. This can be limited by neglecting the smaller eighenvalues (hence truncating) and to consider only the more significant ones.
-\subsubsection{Tikhonov regularization}
-With this method the synthetic image $Gm'$ is calculated and the norm of the residuals calculated. This can then be minimised to find the best precursor. Because this method is also effected by noise a penalty is added to limit its effect. There are various choices for what to limit exactly, but the most common is to limit a derivative of the solution from the zero-th order (limitation on large values) to second (limitation of the laplacian). In this work the laplacian penalty is considered. The derivative is multiplied by a regularisation coefficient in determining the penalty. The sum of the penalty and the residuals norm is then minimised. \cite{Schou2015} This method is simple but numerically demanding for large number of voxels. This can be alleviated by providing the Hessian matrix to the solver, but is still onerous as large matrices have to be handled.
-\subsubsection{Simultaneous algebraic reconstruction technique}
-Simultaneous algebraic reconstruction technique (SART) is an iterative method that aims at minimizing the difference between the measurement $q$ and the synthetic image $Gm'$, and the difference at each step informs how to correct the previous guess. Here too the noise requires a penalty with relative regularisation parameter to be applied, but it is in general less computationally demanding than the previous method. SART can also be modified to avoid negative emissivity. Because of it's relative low computational cost this is often the method of choice when inverting imaging data from plasmas.
+Scanning the voxels with a unitary emitter it is possible to determine all the elements of the matrix $W$, the geometry matrix. For this work this was done with the Monte Carlo ray tracing code CHERAB. To obtain the emissivity map from the power on the foil the geometry matrix must be inverted, but this is an ill-posed problem. A problem is well posed if a solution exists, it is unique and it has small changes for small changes of the inputs. \cite{Hansen1998} In the case of tomographic inversions often the last condition fails. \cite{Hansen2010} This means additional information have to be added in order to find a solution. In the most famous case of tomographic inversion, MRI scans, the source and detector are moved around the volume of interest as to collect information from different angles. This decreases the under-determination of the problem and a solution can be found. In our case neither observer or observed can be moved so additional information are required for a stable solution.
+\section{Inversion techniques}
+\subsection{Truncated singular value decomposition (SVD)}
+The SVD method for tomographic inversion relies on the direct inversion of the geometry matrix. The inversion is performed by finding the eigenvalues and eigenvectors associated with the geometry matrix. A $mxn$ matrix can be written as 
+\begin{equation}
+\bm{W} = \bm{A \Sigma B^T}
+\label{eq:svg1}
+\end{equation}
+where the columns of $\bm{A}$ ($mxm$) are the eigenvectors of $\bm{WW^T}$, the columns of $\bm{B}$ ($nxn$) are the eigenvectors of $\bm{W^TW}$ and the values on the diagonal of $\bm{\Sigma}$ ($mxn$) are the square roots of the eigenvalues of $\bm{WW^T}$ and $\bm{W^TW}$ \cite{Hansen1992}. Using the singular value decomposition it is possible to define $\bm{\Sigma}^+$ as a diagonal matrix with the elements on the diagonal the reciprocal of the elements of $\bm{\Sigma}$ and then
+\begin{equation}
+\bm{W^+} = \bm{B \Sigma^+ A^T} \; , \; m_{SVD} = \bm{W^+} q
+\label{eq:svg2}
+\end{equation}
+where $m_{SVD}$ is the solution of \autoref{eq:gmq}.
+The decomposition can often be numerically performed, but the smaller eigenvalues greatly enhance the effect of any noise in the measured data and even numerical rounding errors. \cite{Schou2015} This can be limited by neglecting the smaller eigenvalues (hence truncating) and to consider only the more significant ones.
+\subsection{Tikhonov regularization}
+This method relies in replacing the ill conditioned problem in \autoref{eq:gmq} with another closely related but well conditioned. Rather than finding the solution $m$ that exactly matches the input data, that translate to the residuals $r = ||\bm{W}m-q|| = 0$, it is sought to find the solution $m'$ that minimizes $||\bm{W}m'-q|| + \alpha^2 ||\bm{L}m'||$ where the regularisation coefficient $\alpha$ is a scalar and the penalty function $L$ indicates what type of constrain is applied to the solution. There are various choices for the penalty function depending on the prior knowledge, but the most common is to limit one of the spatial derivatives of the solution: from the zero-th order (limitation on large values) to second (limitation of the Laplacian). For the specific application of tokamaks the derivative can be limited preferentially along field lines, such to obtain a smoother profile within flux surfaces. In this work a Laplacian penalty is considered. \cite{Schou2015} The solutions from this method don't match exactly the input data but are smoother and normally with a greater meaning. The regularisation coefficient will determines the strength of the regularisation and needs to be determined. This will be shown in \autoref{Regularisation_optimisation}.
+\subsection{Simultaneous algebraic reconstruction technique}
+Simultaneous algebraic reconstruction technique (SART) is an iterative method that aims at minimizing the difference between the measurement $q$ and the synthetic image $\bm{W}m'$, and the difference at each step informs how to correct the previous guess. The emissivity at the step $i+1$ is calculated from the estimation at the step $i$ with \cite{Carr2018,Andersen1984}
+\begin{equation}
+\hat{q} = \bm{W} m^i \; , \; W_{k} = {\sum_{l=1}^{n} W_{k,l}} \; , \; W_{l} = {\sum_{k=1}^{m} W_{k,l}}  \; , \; {m_{l}}^{(i+1)} = {m_{l}}^{(i)} + \frac{\omega}{W_{l}} {\sum_{k=1}^{m} \frac{W_{k,l}}{W_{k}}(q-\hat{q})}
+\label{eq:sart1}
+\end{equation}
+This method too is effected by the problem being ill conditioned, therefore the use of prior information is required. Similarly to SVG a penalty function mediated by a regularisation coefficient can be added to the scheme.  as per \autoref{eq:sart2}
+\begin{equation}
+{m_{l}}^{(i+1)} = {m_{l}}^{(i)} + \frac{\omega}{W_{l}} {\sum_{k=1}^{m} \frac{W_{k,l}}{W_{k}}(q-\hat{q})} - \alpha^2(C {m_{l}}^{(1)} - {\sum_{c=1}^{C} \left(\frac{d_{res}}{d_c}\right)^2 {m_{c}}^{(1)}})
+\label{eq:sart2}
+\end{equation}
+with $c$ the index of the 8 possible neighbouring cells, $d_{res}$ the resolution of the voxel grid and $d_c$  the distance between the centres of the cells $l$ and $c$.
+By limiting to only positive values what is added to ${m_{l}}^{(i)}$ SART can also be modified to avoid negative emissivity. Other penalties can be added to \autoref{eq:sart2} mediated by a positive coefficient to compensate for artefacts or unwanted behaviours. \cite{Carr2018} Because of it's relative low computational cost this is often the method of choice when inverting imaging data from plasma. This method requires too other techniques to determine the optimal regularisation or penalty coefficients.
 
-\subsection{Regularisation optimisation}
-The regularisation method depends on the inversion method chosen. The goal is to find the best compromise between a smooth solution with a realistic profile and one that fits best the measured data.
+\subsection{Regularisation optimisation}\label{Regularisation_optimisation}
+The regularisation method depends on the type of inversion technique chosen. The goal is to find the best compromise between a smooth solution with a realistic profile and one that fits best the measured data.
 \subsubsection{Eigenvalues truncation}
 It is often observed that the eigenvalues associated with the geometry matrix, sorted by amplitude, behave as shown in \autoref{fig:eigenvalues}.
 
@@ -165,7 +340,7 @@ It is often observed that the eigenvalues associated with the geometry matrix, s
 	\label{fig:eigenvalues}
 \end{figure}
 
-In the process of inverting the geometry matrix the the reciprocal of the eigenvalues is used. This means that the smaller of them, that have the lesser influence on the measured data, have a disproportionate effect on the solution. To limit this the smaller eigenvalues can be neglected. How to find the threshold is not simple and it also depends on the noise level in the input data. In general truncated SVD returns more detailed inversions, but it is more effected by noise than other methods. More detail can be found in \cite{Schou2015} and \cite{Widman2002}.
+In the process of inverting the geometry matrix the the reciprocal of the eigenvalues is used. This means that the smaller ones, that have the lesser influence on the measured data, have a disproportionate effect on the solution. This means that small variations due to noise and rounding error are amplified and the solution has no physical meaning. To limit this the smaller eigenvalues can be neglected. How to find the threshold is not simple and it can depend on the noise level in the input data. In general truncated can SVD returns more detailed inversions, but it is more effected by noise than other methods. More detail can be found in \cite{Schou2015} and \cite{Widman2002}.
 
 \subsubsection{L-curve}
 For the Tikinov and SART algorithms one has to establish the magnitude of the regularisation coefficient. A commonly used method is the L-curve. With this approach the emissivity solution is calculated for a range of regularisation parameters. The residuals norm and the norm of the penalty are plotted in a log-log plot to create the L-curve. A typical L-curve is shown in \autoref{fig:l-curve}.
@@ -308,6 +483,9 @@ Comparison of IRVB with other diagnostics (MWI and spectroscopy). It seems that 
 In some CD shots the outer leg falls in the FOV of the MWI (even if barely). I can compare when the outer target radiatively detaches with MWI to estimate the main source of radiation.
 With HFS fuelling tot rad peaks in inner separatrix?
 Compare resistive bolometer at x-point and IRVB: the resistive bolometer is not blackened to there could be a difference in sensitivity depending on the source of radiation.
+
+\hl{TO DO use the plot from PSI that compares IRVB to LPs}
+
 \subsection{XPR and ELMs}
 \hl{to do}
 I already found shots that start attached with ELMs and they stop with detachment. What are the effectson the radiation profile? At what point in the path to radiative detachment ELMs stop?
