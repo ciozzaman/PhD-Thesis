@@ -222,7 +222,7 @@ An approximate view inside MAST-U, imagining that the IRVB operates as a camera 
 \end{figure}
 
 
-\autoref{fig:res_bolo1} displays the overlap between the coverage and views of the resistive bolometry system and that of the IRVB. The core resistive bolometer LOSs are mostly suited to measure the fairly homogeneous core emissivity profiles on a flux surface, as there is no overlap between the various LOS. The super-x chamber has a good coverage, but only between the x-point and the entrance to the divertor defined by the baffle. The IRVB is aimed to fill the gap between the two systems.
+\autoref{fig:res_bolo1} displays the overlap between the coverage and views of the resistive bolometry system and that of the IRVB. The core resistive bolometer LOSs are mostly suited to measure the fairly homogeneous core emissivity profiles on a flux surface, as there is no overlap between the various LOS. The super-x chamber has a good coverage, but only between the  strike point and the entrance to the divertor defined by the baffle. The IRVB is aimed to fill the gap between the two systems.
 
 The assembly holding the foil is composed by a $2.5\mu m$ thick platinum foil from Nilaco, Japan, held between oxygen free copper plates and was originally prepared by NIFS. The foil is the same as that used in Alcator C-mod\cite{Reinke2018a} where it is described in more detail. The foil thickness is optimised to stop photons with energies up to $8.2keV$. \cite{PETERSON2010,Gullikson2022} The foil and its support frame have been spray blackened on both sides with Aerodag® G Graphite Aerosol and calibrated with a procedure analogous to the one described in \cite{Itomi2014}. The layer of graphite helps to absorb radiation in the visible range, avoiding reflection; even if its thickness is larger than the platinum layer\cite{Pandya2014} it should be thermally irrelevant. \cite{VanEden2018} Lower energy photons like visible light represent a minor energy loss channel, but their relevance is expected to increase in deeply detached and cold plasmas, therefore the importance of the coating.\cite{Havlickova2015a} In \cite{Mukai2016} it is shown that this type of coating causes irregularities in the foil, leading to non uniform temperature increases. To alleviate this issue, the carbon layer can be deposited with a vacuum evaporation technique that guarantees reproducibility and uniformity, as done at LHD. \cite{Mukai2016} Given the prototype nature of the present implementation and the availability of a vacuum compatible certified absorber, this foil was deemed sufficient.
 
@@ -1125,7 +1125,7 @@ Sometimes the L-curve of the bayesian method can present two concave sections, o
 \end{figure}
 
 The power absorbed by the foil that is excluded (part because associated to the voxels close to the pinhole unbound by the Laplacian, part because of the offsets) is shown in \autoref{fig:SOLPS_phantom3}. Compared to \autoref{fig:SOLPS_phantom1a} it is clear that it is very low and does not significantly impact the inversion.
-The difference in the result between the two methods is minor. The Bayesian method seems to return a better match then SART in the SXD (approximately z<-1.5m and r>0.8m), but that is of minor importance for the IRVB. From the inner strike point towards the pinhole (both in green) can be observed a stripe of higher emissivity not present in the phantom. This is a common feature for strong signal cases, where the radiation is distributed from its real origin towards the pinhole. This happens because the sensitivity to the poloidal view is higher then the toroidal (longer integration path). In terms of total power SART is within 1\% of the total radiated power while he Bayesian method measures $517\pm207 kW$ respect to $572kW$. The phantom power is within the uncertainty given by the Bayesian method. Both methods have a very good agreement in the core but both return about 33\% weaker radiation below x-point and out of the SXD. This is not captured by the uncertainty given by the Bayesian method, amounting to 6\%. This is likely due to the very peaked emissivity of the phantom on the inner target, difficult to reproduce because of the smoothing induced by the regularisation.
+The difference in the result between the two methods is minor. The Bayesian method seems to return a better match then SART in the SXD chamber (approximately z<-1.5m and r>0.8m), but that is of minor importance for the IRVB. From the inner strike point towards the pinhole (both in green) can be observed a stripe of higher emissivity not present in the phantom. This is a common feature for strong signal cases, where the radiation is distributed from its real origin towards the pinhole. This happens because the sensitivity to the poloidal view is higher then the toroidal (longer integration path). In terms of total power SART is within 1\% of the total radiated power while he Bayesian method measures $517\pm207 kW$ respect to $572kW$. The phantom power is within the uncertainty given by the Bayesian method. Both methods have a very good agreement in the core but both return about 33\% weaker radiation below x-point and out of the SXD chamber. This is not captured by the uncertainty given by the Bayesian method, amounting to 6\%. This is likely due to the very peaked emissivity of the phantom on the inner target, difficult to reproduce because of the smoothing induced by the regularisation.
 
 \subsubsection{Experimental data}\label{Experimental data}
 
@@ -1198,9 +1198,9 @@ As a last test the emissivity in \autoref{fig:real_phantom2b} was used as phanto
 Both inversions are close to the phantom even if the emissivity profiles are weaker, corresponding to a measured total power 8.3\% (SART) and 6.4\% (Bayesian) lower. In the divertor and x-point regions the power is for both about 10\% less than in the phantom.
 Ultimately, both method can reliably invert the power absorbed by the foil from a conventional plasma to the emissivity profile, being able to measure between 10 and 30\% less of the input radiated power. The Bayesian method is preferred to SART because it is less subject to anomalies when inverting real experimental data.
 
-\subsection{Inversions in the SXD}
+\subsection{Inversions in the SXD chamber}\label{Inversions in the SXD}
 
-We mentioned before conventional plasmas because, during MU01, it was noticed that the radiation for super-x shots could not be properly inverted. In the super-x chamber the inverted radiation is elongated and moved along the LOS from the likely position where it originates to the target. To characterise this phenomena a series of localised phantoms of constant emissivity of $1.26MW/m^3$, located from the outer target to the x-point was forward modelled to the foil and inverted. The regularisation coefficient was maintained fixed at $\alpha=5 \; 10^{-3}$, a common value for most of the experimental conditions. Some of the results are shown in \autoref{fig:scan1} showing the elongation of the radiation.
+We mentioned before conventional plasmas because, during MU01, it was noticed that the radiation for super-x shots could not be properly inverted. In the SXD chamber the inverted radiation is elongated and moved along the LOS from the likely position where it originates to the target. To characterise this phenomena a series of localised phantoms of constant emissivity of $1.26MW/m^3$, located from the outer target to the x-point was forward modelled to the foil and inverted. The regularisation coefficient was maintained fixed at $\alpha=5 \; 10^{-3}$, a common value for most of the experimental conditions. Some of the results are shown in \autoref{fig:scan1} showing the elongation of the radiation.
 
 \begin{figure}
      \begin{subfigure}{0.32\linewidth}
@@ -1223,7 +1223,7 @@ We mentioned before conventional plasmas because, during MU01, it was noticed th
          \caption{}
          \label{fig:scan1c}
      \end{subfigure}
-    \caption{Emissivity profiles for 3 phantoms occupying 9 voxels (indicated by the solid black line) with fixed emissivity of $1.26MW/m^3$. The radiation from the phantoms is forward modelled to the foil power density, foil temperature and camera counts and then inverted to emissivity with a fixed regularisation coefficient of $\alpha=5 \; 10^{-3}$. Inside of the super-x chamber the radiation is elongated along the LOS. In dashed black indicated the centre of different phantom located as to follow the typical shape of the separatrix in a super-x plasma. The green indicates the different share for a conventional plasma (the shape at smaller radii is shared with the super-x case so not repeated). In magenta is a scan of location close to the target to evaluate the precision at the strike point.}
+    \caption{Emissivity profiles for 3 phantoms occupying 9 voxels (indicated by the solid black line) with fixed emissivity of $1.26MW/m^3$. The radiation from the phantoms is forward modelled to the foil power density, foil temperature and camera counts and then inverted to emissivity with a fixed regularisation coefficient of $\alpha=5 \; 10^{-3}$. Inside of the SXD chamber the radiation is elongated along the LOS. In dashed black indicated the centre of different phantom located as to follow the typical shape of the separatrix in a super-x plasma. The green indicates the different share for a conventional plasma (the shape at smaller radii is shared with the super-x case so not repeated). In magenta is a scan of location close to the target to evaluate the precision at the strike point.}
     \label{fig:scan1}
 \end{figure}
 
@@ -1257,7 +1257,7 @@ In figure \autoref{fig:scan2b} is shown the difference respect to the input of t
 	\label{fig:scan3}
 \end{figure}
 
-Given the above, we can say that the IRVB in the present setup can be used with reasonable uncertainty to determine where high emissivity regions of the plasma are located from the core up to the blue dashed line at the entrance of the SXD in \autoref{fig:scan3}. Beyond that only integrated information like the total radiated power can be obtained.
+Given the above, we can say that the IRVB in the present setup can be used with reasonable uncertainty to determine where high emissivity regions of the plasma are located from the core up to the blue dashed line at the entrance of the SXD chamber in \autoref{fig:scan3}. Beyond that only integrated information like the total radiated power can be obtained.
 It must be noted that what discussed in this section is valid for the common regularisation coefficient $\alpha=5 \; 10^{-3}$. If the signal level is low and a stronger regularisation is necessary the radiation is more spread out and this results in the region with insufficient resolution to move towards the x-point. It is therefore use extra caution in examining data relative to super-x plasmas.
 
 Now that the Bayesian inversion method is characterised and benchmarked against a commonly used method like SART, we can analyse the inverted data from the first experimental campaign in MAST-U. We will first analyse the same shots from \autoref{MU01 Line integrated results} and compare the results with other diagnostics, then try to find correlations between multiple shot to gain physics understanding and characterise the behaviour of MAST-U plasmas.
@@ -1290,12 +1290,12 @@ This is more severe on the lower divertor, that unfortunately is the one where m
 As mentioned in \autoref{Tomography} the IRVB does not have the HFS midplane in its useful FOV. To examine the change in radiated power there the resistive bolometer LOS CH26 and CH27 will be used. As per \autoref{fig:res_bolo1} these are part of the tangential midplane fan and correspond to the LOS closer to the central column (CH27) and the one immediately further away from it (CH26). When the radiator moves upstream along the HFS separatrix it stops at the midplane and from there penetrates further in the core forming the MARFE-like structure. When this happens it is observed that the brightness of CH27 over CH26 increases, indicating strong radiation close to the separatrix. Later when the radiation moves in the core also CH26 is excited, and the ratio decreases. The increase in the CH27/CH26 ratio can therefore be used to determine when the radiation is increasing on the midplane. Even if the difference is small, the brightness of CH26 is scaled up to match the integration path of CH27 in the plasma.
 
 Additionally the tangential view of the resistive bolometer system can be used, even considering the large uncertainty because of the dead channels mentioned in \autoref{MU01 Line integrated results}, to give a ballpark figure for the total core emissivity, that can then be compared with the IRVB. In order to calculate the radiated power from the brightness it would be necessary to perform an inversion, but the resolution is deemed insufficient. Instead, an integral approach is used as done before for JET resistive bolometer system.\cite{Ingesson2000} Here it is assumed that the line integrated emission from each LOS is generated at the radial distance of the magnetic axis, and a weight is applied to the brightness to compensate for the different length of the LOS in the vacuum vessel. In JET the result using this approximation is shown to be within 10\% of the phantom used, and not requiring an inversion, resilient to noise in the data. In MU01 the LOS close to the x-point are not operational, as shown in \autoref{fig:res_bolo1}, therefore this estimate is likely an underestimation of the real core emission. This comparison is done assuming up/down symmetry for the emissivity from IRVB. This is normally a good approximation for up/down symmetric fuelling, but can lead to under/overestimation of the radiated power otherwise.
-For easy of analysis the volume in the IRVB FOV is partitioned as per \cite{Harrison2017}. The regions are shown in \autoref{fig:IRVB_regions_divided}. Additionally, the radiation around the legs and outside the x-point region is also recorded.
+For easy of analysis the volume in the IRVB FOV is partitioned similar to \cite{Harrison2017}. The regions are shown in \autoref{fig:IRVB_regions_divided}. Additionally, the radiation around the legs and outside the x-point region is also recorded.
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0 0 0 0},clip,width=0.4\linewidth]{Chapters/chapter2/figs/IRVB_regions_divided.png}
-	\caption{Regions in which the plasma volume is divided as per \cite{Harrison2011}: red = x-point (radious of 10cm around x-point), green = core, light blue = inner leg and SOL, blue = outer leg and SOL below the x-point, magenta = outer SOL. The distinction between inner and outer leg region is dove via the extension of the line between magnetic axis and x-point. The radiation within 10cm of the legs and out of the x-point region is also separately accounted.}
+	\includegraphics[trim={0 0 0 0},clip,width=0.4\linewidth]{Chapters/chapter2/figs/IRVB_regions_divided2.png}
+	\caption{Regions in which the plasma volume is divided similar to \cite{Harrison2011}: red = x-point (radius of 10cm around x-point), green = core, yellow = inner SOL, light blue = inner leg and SOL below the x-point, blue = outer leg and SOL below the x-point, magenta = outer SOL. The distinction between inner and outer leg region is dove via the extension of the line between magnetic axis and x-point. The radiation within 10cm of the legs and out of the x-point region is also separately accounted. The green dashed line indicates the left limit of the SXD chamber region limit. The red dashed line indicates the upper limit of the MWI diagnostic FOV.}
 	\label{fig:IRVB_regions_divided}
 \end{figure}
 
@@ -1313,37 +1313,37 @@ The tomographically inverted emissivity from the shot 45473 is shown in \autoref
 
 \begin{figure}
      \centering
-     \begin{subfigure}{0.355\linewidth}
+     \begin{subfigure}{0.395\linewidth}
          \centering
-         \includegraphics[trim={75 70 25 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_67.png}
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_72.png}
          \vspace*{-6.5mm}
          \caption{386ms}
          \label{fig:45473_export2_1}
      \end{subfigure}
-     \begin{subfigure}{0.355\linewidth}
+     \begin{subfigure}{0.395\linewidth}
          \centering
-         \includegraphics[trim={75 70 25 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_68.png}
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_73.png}
          \vspace*{-6.5mm}
          \caption{511ms}
          \label{fig:45473_export2_2}
      \end{subfigure}
-     \begin{subfigure}{0.355\linewidth}
+     \begin{subfigure}{0.395\linewidth}
          \centering
-         \includegraphics[trim={75 70 25 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_69.png}
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_74.png}
          \vspace*{-6.5mm}
          \caption{605ms}
          \label{fig:45473_export2_3}
      \end{subfigure}
      \begin{subfigure}{0.355\linewidth}
          \centering
-         \includegraphics[trim={75 70 25 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_70.png}
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_75.png}
          \vspace*{-6.5mm}
          \caption{699ms}
          \label{fig:45473_export2_4}
      \end{subfigure}
-     \begin{subfigure}{0.4\linewidth}
+     \begin{subfigure}{0.395\linewidth}
          \centering
-         \includegraphics[trim={5 25 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_71.png}
+         \includegraphics[trim={5 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45473_export_76.png}
          \vspace*{-6.5mm}
          \caption{762ms}
          \label{fig:45473_export2_5}
@@ -1353,7 +1353,7 @@ The tomographically inverted emissivity from the shot 45473 is shown in \autoref
     \label{fig:45473_export2}
 \end{figure}
 
-Like for the line integrated data it is possible to observe the movement of the inner leg, but also the outer one can now be examined. In this conditions, Ohmic L-mode conventional divertor, the outer leg detaches after the inner one and it has a lower emissivity. After the formation of the XPR the radiator moves along the inner separatrix. Here it seems that the radiation is concentrated inside the core, but the resolution is not deemed enough to say it for certain. Conversely, when the HFS MARFE-like structure grows in the later stages of the discharge a general movement of the radiation inward can be observed. In \autoref{fig:45473_export2_5} the radiation is still concentrated at the midplane, only outside the IRVB FOV. This sequence of events is similar to what expected from \autoref{The x-point radiator}. From \autoref{fig:45473_export2_1} and \subref{fig:45473_export2_2} can be also observed that the poloidal extend of the emitting region in the leg is larger on the outer leg than the inner, most likely given by the toroidal magnetic field weakening.
+Like for the line integrated data it is possible to observe the movement of the inner leg, but also the outer one can now be examined. In this conditions, Ohmic L-mode conventional divertor, the outer leg detaches after the inner one and it has a lower emissivity. After the formation of the XPR the radiator moves along the inner separatrix. Here it seems that the radiation is concentrated inside the core, but the resolution is not deemed enough to say it for certain. Conversely, when the HFS MARFE-like structure grows in the later stages of the discharge a general movement of the radiation inward can be observed. In \autoref{fig:45473_export2_5} the radiation is still concentrated at the midplane, only outside the IRVB FOV. This sequence of events is similar to what expected from \autoref{The x-point radiator}. From \autoref{fig:45473_export2_1} and \subref{fig:45473_export2_2} can be also observed that the poloidal extend of the emitting region in the leg is larger on the outer leg than the inner, most likely given by the toroidal magnetic field weakening. Also, the radiation seem to move forming small continuous spots of higher radiation rather than in a continuous manner. This is most likely due to irregularities of the foil properties, that cause similarly irregular changes of the measure foil absorbed power.
 These observations can now be compared with other diagnostics as per \autoref{Metrics from diagnostics} as shown in \autoref{fig:mu01_tomo1}.
 \begin{figure}
      \centering
@@ -1393,140 +1393,272 @@ These observations can now be compared with other diagnostics as per \autoref{Me
          \label{fig:mu01_tomo1e}
      \end{subfigure}
      \vspace*{-3mm}
-     \caption{Results from different diagnostics related to detachment for a conventional divertor, L-mode, Ohmic plasma (shot 45473, Double-null and 600kA). (\subref{fig:mu01_tomo1a}) movement of the peak radiator along the separatrix as per scaling defined in \autoref{Metrics from diagnostics} for the inner and outer separatrix. The vertical dashed lines indicate the at what point in time the data in \autoref{fig:45473_export2_5} correspond. (\subref{fig:mu01_tomo1b}) Components of the global power balance: input power defined as the sum of Ohmic and NBI minus the variation in stored energy. The IRVB power is obtained by adding all voxels at Z<0 then multiplying by 2, therefore assuming up/down symmetry. (\subref{fig:mu01_tomo1c}) particle flux from Langmuir probes at the outer targets. (\subref{fig:mu01_tomo1d}) brightness for the poloidal LOSs CH26 and CH27 (CH26 scaled to match CH27 integration path length) and (red) the radio of the two, showing the growth of the MARFE. The vertical red line corresponds to when the CH27/CH26 ratio starts to grow. (\subref{fig:mu01_tomo1e}) averaged core density ($\overline{n_e}$) and upstream density from TS as per \autoref{Metrics from diagnostics} ($n_u$).}
+     \caption{Results from different diagnostics related to detachment for a conventional divertor, L-mode, Ohmic plasma (shot 45473, Double-null and 600kA). (\subref{fig:mu01_tomo1a}) movement of the peak radiator along the separatrix as per scaling defined in \autoref{Metrics from diagnostics} for the inner and outer separatrix. The vertical dashed lines indicate the time that corresponds to the data in \autoref{fig:45473_export2}. (\subref{fig:mu01_tomo1b}) Components of the global power balance: input power defined as the sum of Ohmic and NBI minus the variation in stored energy. The IRVB power is obtained by adding all voxels at Z$<$0 then multiplying by 2, therefore assuming up/down symmetry. The divertor region is obtained adding the inner leg + SOL and outer log + SOL region (see \autoref{fig:IRVB_regions_divided}). (\subref{fig:mu01_tomo1c}) particle flux from Langmuir probes at the outer targets. (\subref{fig:mu01_tomo1d}) brightness for the tangential LOSs CH25, CH26 and CH27 (CH25 and CH26 scaled to match CH27 integration path length) and (red) the radio of the two, showing the growth of the MARFE. The vertical red line corresponds to when the CH27/CH26 ratio starts to grow. (\subref{fig:mu01_tomo1e}) averaged core density ($\overline{n_e}$) and upstream density from TS as per \autoref{Metrics from diagnostics} ($n_u$).}
 	\label{fig:mu01_tomo1}
 \end{figure}
 
-This shot was fueled from HFS\_MID\_U02, a valve on the HFS 26cm above the midplane (see \autoref{fig:HSV1}), with a usually negligible impact on up/down symmetry. Another factor in up/dowm symmetry is how close are the two separatrixes, given by the upper and lower x-point. This is expressed by the $\delta R_{sep}$ parameter equal to the radial distance between the separatrixes at the LFS midplane. It has been shown that a small change around $\delta R_{sep}=0$ has a significant influence on the up/down and inner/outer leg power balance.\cite{Fevrier2021} For this shot $\delta R_{sep}$ evolved from -2mm to +5mm, with a characteristic SOL power decay length ($\lambda_q$) of 4/7mm at the midplane; in TCV double null (DN) experiments, with a similar $\lambda_q$=3/6mm that would have caused a change of about -25/+50\% of the heat flux to the lower divertor.\cite{Potzel2014} This seems not happening here, as the particle flux difference from LPs is present but limited. Moreover, beyond some noise caused by a strike point sweep and the presence of bad probes, the difference stays fairly constant, possibly due by the forward field direction and associated drifts (see \autoref{fig:mu01_tomo1c}). For this shot, also, neither the high speed camera or the resistive bolometer display dramatic asymmetries, indicating that MAST-U could be less sensitive to $\delta R_{sep}$ than other devices.
+This shot was fueled from HFS\_MID\_U02, a valve on the HFS 26cm above the midplane (see \autoref{fig:HSV1}), with a usually negligible impact on up/down symmetry. Another factor in up/dowm symmetry is how close are the two separatrixes, given by the upper and lower x-point. This is expressed by the $\delta R_{sep}$ parameter equal to the radial distance between the separatrixes at the LFS midplane. It has been shown that a small change around $\delta R_{sep}=0$ has a significant influence on the up/down and inner/outer leg power balance.\cite{Fevrier2021} For this shot $\delta R_{sep}$ evolved from -2mm to +5mm, with a characteristic SOL power decay length ($\lambda_q$) of 4/7mm at the midplane; in TCV double null (DN) experiments, with a similar $\lambda_q$=3/6mm that would have caused a change of about -25/+50\% of the heat flux to the lower divertor.\cite{Potzel2014} This seems not happening here, as the particle flux difference from LPs is present but limited. Moreover, beyond some noise caused by a strike point sweep and the presence of bad probes, the difference stays fairly constant, possibly due by the forward field direction and associated drifts (see \autoref{fig:mu01_tomo1c}). For this shot, also, neither the high speed camera or the resistive bolometer display dramatic asymmetries, indicating that MAST-U could be less sensitive to $\delta R_{sep}$ than other devices. An important parameter to asses the quality of the discharge is the inner gap, the distance between the central column and the separatrix. This was maintained higher than 4cm throughout the shot, much larger than $\lambda_q$ so guaranteeing no local interaction of the plasma.
 
 \autoref{fig:mu01_tomo1a} shows again how the inner leg detaches radiatively before the outer. Noteworthy is that the detachment process on both legs seems to be gradual, with a progressive movement along the separatrix. This goes against expectations from theory, as intermediate states are expected to be unstable in nature on the inner leg, therefore a sharp transition would be expected.\cite{Lipschultz2016} \hl{I need to check this one. check also if there are more differences I missed from}with \cite{Fevrier2021}
 
 One point is missing in \autoref{fig:mu01_tomo1c}, but the particle flux roll over is clear, happening about at the same time or slightly after radiative detachment.
 
-From \autoref{fig:mu01_tomo1b} one can see that the total radiated power from IRVB is below the input power available to dissipate. The radiated power in the core from resistive bolometry and IRVB match up to the start of the inner leg detachment. From there the resistive bolometer is measuring a higher power in the core. This is not what would be expected. At the beginning of the detachment process the x-point region and even more the legs (the outer leg has usually a lower emissivity, but its weight in power is higher because of the larger radius and poloidal spread) dominates radiatively. These regions are out of the FOV of the resistive bolometry system (because of the bad LOSs) so until a lower power would be expected until significant radiation doesn't climb the separatrix. An explanation is that the fuelling location for this shot is above the midplane, out of the IRVB FOV, and from \autoref{Spatial calibration using fueling valves and EFIT++} it was already noted strong radiating regions can be localised there. The resistive bolometric LOS CH6 (see \autoref{fig:res_bolo1}) is from $\sim$0.5s shows a noticeably higher brightness than the others and this could explain the over prediction from the early stage of detachment. Later in the discharge the MARFE-like structure becomes dominant and, because outside the IRVB FOV, a higher measured power is to be expected.
+From \autoref{fig:mu01_tomo1b} one can see that the total radiated power from IRVB is below the input power available to dissipate. In order to compare the emission with the resistive bolometer system, the "core+SOL" region is composed of the core plus both inner and outer SOL region from \autoref{fig:IRVB_regions_divided}.The radiated power in the core from resistive bolometry and IRVB match up to the start of the inner leg detachment. From there the resistive bolometer is measuring a higher power in the core. This is not what would be expected. At the beginning of the detachment process the x-point region and even more the legs (the outer leg has usually a lower emissivity, but its weight in power is higher because of the larger radius and poloidal spread) dominates radiatively. These regions are out of the FOV of the resistive bolometry system (because of the bad LOSs) so until a lower power would be expected until significant radiation doesn't climb the separatrix. An explanation is that the fuelling location for this shot is above the midplane, out of the IRVB FOV, and from \autoref{Spatial calibration using fueling valves and EFIT++} it was already noted strong radiating regions can be localised there. The resistive bolometric LOS CH6 (see \autoref{fig:res_bolo1}) is from $\sim$0.5s shows a noticeably higher brightness than the others and this could explain the over prediction from the early stage of detachment. Later in the discharge the MARFE-like structure becomes dominant and, because outside the IRVB FOV, a higher measured power is to be expected. In \autoref{fig:mu01_tomo4} are shown high speed visible imaging data showing the radiation profile at the beginning and end of the MARFE-like structure growth. It can be observed that the radiation is stronger on the top of the machine and that the strong radiating region grows from the plasma fuelling location. For this reason it is not clear if this structure is due to the interaction with the fuelled gas with the plasma or due to the radiation-condensation phenomena driven by impurities observed during MARFEs.\cite{Lipschultz1984}
 
-In \autoref{fig:mu01_tomo1d} is shown that the ratio of CH27 and CH26 brightnesses starts to rise since the early stages of detachment, after the inner leg radiatively detaches. This is confirmed by the IRVB, as the emissivity on the inner separatrix starts to increase early on too. The CH27/CH26 ratio plateau after the outer leg detaches both radiatively and from LPs. It is hard to tell in this process when the proper MARFE starts, if it does. From radiative clues this is a continuous process, and the same can be seen from TS where plasma of high density (more than twice the core peak) and low temperature (below 10eV) is seen penetrating towards the magnetic axis.
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.3\linewidth}
+         \centering
+         \includegraphics[trim={60 0 120 60},clip,width=\textwidth]{Chapters/chapter2/figs/45473_for_paper_600ms.png}
+         \caption{600ms}
+         \label{fig:mu01_tomo4a}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+         \centering
+         \includegraphics[trim={60 0 120 60},clip,width=\textwidth]{Chapters/chapter2/figs/45473_for_paper_750ms.png}
+         \caption{750ms}
+         \label{fig:mu01_tomo4b}
+    \end{subfigure}
+    \begin{subfigure}{0.054\linewidth}
+         \centering
+         \vspace{-6mm}
+         \includegraphics[trim={595 0 0 50},clip,width=\textwidth]{Chapters/chapter2/figs/45473_for_paper_750ms.png}
+    \end{subfigure}
+    \caption{Data from the high speed visible camera for shot 45473 showing the level up/down symmetry in a shot fuelled only by the midplane HFS\_MID\_U02 valve at the beginning of the formation of the MARFE-like structure (\subref{fig:mu01_tomo4a}) and the end(\subref{fig:mu01_tomo4b}) showing the up/down asymmetry.}
+    \label{fig:mu01_tomo4}
+\end{figure}
+
+In \autoref{fig:mu01_tomo1d} is shown that the ratio of CH27 and CH26 brightnesses starts to rise since the early stages of detachment, after the inner leg radiatively detaches. This is confirmed by the IRVB and fast camera, as the emissivity on the inner separatrix starts to increase early on too. The CH27/CH26 ratio plateau after the outer leg detaches both radiatively and from LPs. It is hard to tell in this process when a proper MARFE starts, if it does. From radiative clues the increase of emissivity on the HFS is a continuous process, and the same can be seen from TS where plasma of high density (more than twice the core peak) and low temperature (below 10eV) is seen penetrating towards the magnetic axis.
 
 Finally \autoref{fig:mu01_tomo1e} shows how the core and upstream density both rise during the discharge. This mirrors the fuelling, that was linearly increased during the discharge from 0.3s.
 
 
-Within the same session other 3 discharges were performed, to complete a density scan from attached to deeply detached. 
+Within the same session other 3 discharges were performed to complete a density scan from attached to deeply detached by changing the fuelling. The data from the 4 can be combined using as coordinate the plasma upstream density and verify the consistency of the behaviour observed. The relation between target particle flux and radiative detachment is shown in \autoref{fig:cd_compare}.
+\begin{figure}
+	\centering
+	\includegraphics[trim={70 30 110 50},clip,width=\linewidth]{Chapters/chapter2/figs/CD_OH_MU01_compare.png}
+	\caption{Comparison of the target current, returning the detachment condition from particle flux roll over, with the movement of the emission radiator, indicating radiative detachment. The vertical dashed line indicate the beginning of the growth of the MARFE-like structure on the HFS midplane.}
+	\label{fig:cd_compare}
+\end{figure}
+There is a significant spread in the change of upper particle flux with detachment. The upper target is well diagnosed with LPs, so the spread for $n_u > 0.5\cdot 10^{19}$ is most likely due to imprecision in determining it with the method mentioned in \autoref{Metrics from diagnostics}. A correlation built using $n_u$ from SOLPS simulations gave slightly better results, but leading to the same conclusions. The spread on ${\hat{L}}_peak$ and its almost stepwise look are most likely due to the non uniformity of the foil mentioned before. Even considering this one can infere that across multiple shots the radiative detachment on the outer target happens slightly earlier or at the same time as particle flux roll over. Radiative detachment happens first on the inner target then on the outer, and happens gradually, differently from expectations from theory.\cite{Lipschultz2016} Increasing the density further causes the radiation to move upstream along the separatrix towards the inner midplane and the emergence of a MARFE-like structure that can impact the core plasma.
 
 \subsection{High power discharges}
+
+High power discharges are here defined the ones where the NBI contributed to the input power as to reach H-mode. The two NBIs (located as per \autoref{fig:res_bolo1}) were, for MU01, not capable to run at full nominal power (2.5MW each) and on top the fraction of the beam energy retained by the plasma was difficult to quantify, given the plasma scenarios were being developed. For this reasons the fractions are here only estimated to be approximately 40\% for the south west (SW) and 80\% for south south (SS).
+
+The data shown in \autoref{fig:45401_export2} and \ref{fig:mu01_tomo2} regards the same high power discharge as in \autoref{MU01 Line integrated results}.
+
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_export_88.png}
+         \vspace*{-6.5mm}
+         \caption{315ms}
+         \label{fig:45401_export2_1}
+     \end{subfigure}
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_export_86.png}
+         \vspace*{-6.5mm}
+         \caption{607ms}
+         \label{fig:45401_export2_2}
+     \end{subfigure}
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_export_89.png}
+         \vspace*{-6.5mm}
+         \caption{717ms}
+         \label{fig:45401_export2_3}
+     \end{subfigure}
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_export_87.png}
+         \vspace*{-6.5mm}
+         \caption{826ms}
+         \label{fig:45401_export2_4}
+     \end{subfigure}
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 90 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_export_90.png}
+         \vspace*{-6.5mm}
+         \caption{1009ms}
+         \label{fig:45401_export2_5}
+     \end{subfigure}
+    \vspace*{-3mm}
+    \caption{Changes in emissivity distribution in a density ramp for a conventional divertor, H-mode, NBI heated plasma (shot 45401, Double-null and 750kA), same as \autoref{fig:45401_export}. First both inner and outer target are radiatively attached (\subref{fig:45401_export2_1}), then the outer starts detaching (\subref{fig:45401_export2_2}) and closely after the inner to form an x-point radiator (\subref{fig:45401_export2_3}). Then a radiation MARFE-like structure on the high field side (HFS) just below the midplane (\subref{fig:45401_export2_4}) and moves slightly back towards the x-for decreasing core density (\subref{fig:45401_export2_5}). A disruption then follows. Note that the all images have different color bar ranges. The range in (\subref{fig:45401_export2_1}) was adapted to show the early detachment of the outer leg.}
+    \label{fig:45401_export2}
+\end{figure}
+
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.8\linewidth}
+         \centering
+         \includegraphics[trim={0 960 0 150},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small3.png}
+         \vspace*{-12mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo2a}
+     \end{subfigure}
+     \begin{subfigure}{0.8\linewidth}
+         \centering
+         \includegraphics[trim={0 753 0 350},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small3.png}
+         \vspace*{-12mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo2b}
+     \end{subfigure}
+     \begin{subfigure}{0.8\linewidth}
+         \centering
+         \includegraphics[trim={0 550 0 555},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small3.png}
+         \vspace*{-12mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo2c}
+     \end{subfigure}
+     \begin{subfigure}{0.8\linewidth}
+         \centering
+         \includegraphics[trim={0 305 0 760},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small3.png}
+         \vspace*{-18mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo2d}
+     \end{subfigure}
+     \begin{subfigure}{0.8\linewidth}
+         \centering
+         \includegraphics[trim={0 100 0 970},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small3.png}
+         \vspace*{-7mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo2e}
+     \end{subfigure}
+     \vspace*{-3mm}
+     \caption{Results from different diagnostics related to detachment for a conventional divertor, L-mode, NBI heated plasma (shot 45401, Double-null and 750kA). (\subref{fig:mu01_tomo2a}) movement of the peak radiator along the separatrix as per scaling defined in \autoref{Metrics from diagnostics} for the inner and outer separatrix. The vertical dashed lines indicate the time that corresponds to the data in \autoref{fig:45401_export2}. (\subref{fig:mu01_tomo2b}) Components of the global power balance: input power defined as the sum of Ohmic and NBI minus the variation in stored energy. The NBI power is already scaled by the corrective factors 0.4 and 0.8 for SW and SS respectively. The IRVB power is obtained by adding all voxels at Z$<$0 then multiplying by 2, therefore assuming up/down symmetry. The divertor region is obtained adding the inner leg + SOL and outer log + SOL region (see \autoref{fig:IRVB_regions_divided}). (\subref{fig:mu01_tomo2c}) particle flux from Langmuir probes at the outer targets. (\subref{fig:mu01_tomo2d}) brightness for the tangential LOSs CH25, CH26 and CH27 (CH25 and CH26 scaled to match CH27 integration path length), (red) the radio of the two, showing the growth of the MARFE, and poloidal LOSs CH4 and CH13. The vertical red line corresponds to when the CH27/CH26 ratio starts to grow. (\subref{fig:mu01_tomo2e}) averaged core density ($\overline{n_e}$) and upstream density from TS as per \autoref{Metrics from diagnostics} ($n_u$).}
+	\label{fig:mu01_tomo2}
+\end{figure}
+
+
+Here both beams are used and $\delta R_{sep}$ stays within 2mm but the plasma is mainly fuelled from the valve LFSD\_BOT\_L0102, located inside the SXD chamber on the flat top wall. This means that the plasma is most likely not up/down symmetric. The inner gap was maintained around 5cm.
+
+The sequence of events is here significantly different than the low power case. The outer leg starts detaching first, but then remains stable 2/3 of the way to the x-point. Then the inner leg detaches completely and the radiation climbs up the separatrix, with the outer leg detaching only later. As shown in \autoref{fig:mu01_tomo2e} the ratio CH27/CH26 started to grow at the beginning of the shot, but not representing the same clear marker as in \autoref{fig:mu01_tomo1e}, therefore indicating that the MARFE never fully develops. This is confirmed by the lack of a cold and dense region on the HFS from TS. From LPs the current is similar for the upper and lower divertor, indicating minor up/down asymmetry.
+
+Fuelling from the LFSD\_BOT\_L0102 valve was kept increasing throughout the discharge, and at about 800ms an event occurs such that there is a net separation between the upper and lower divertor. This is confirmed also by comparing the resistive bolometer CH4 and CH13, where CH13, pointing towards the lower part of the separatrix measures significantly higher emission after 800ms. From the fast camera the asymmetry can be observed too, especially in the divertor region, after 800ms (see \autoref{fig:mu01_tomo3}).
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.3\linewidth}
+         \centering
+         \includegraphics[trim={60 0 120 60},clip,width=\textwidth]{Chapters/chapter2/figs/45401_for_paper_300ms.png}
+         \caption{300ms}
+         \label{fig:mu01_tomo3a}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+         \centering
+         \includegraphics[trim={60 0 120 60},clip,width=\textwidth]{Chapters/chapter2/figs/45401_for_paper_750ms.png}
+         \caption{750ms}
+         \label{fig:mu01_tomo3b}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+         \centering
+         \includegraphics[trim={60 0 120 60},clip,width=\textwidth]{Chapters/chapter2/figs/45401_for_paper_900ms.png}
+         \caption{900ms}
+         \label{fig:mu01_tomo3c}
+    \end{subfigure}
+    \begin{subfigure}{0.054\linewidth}
+         \centering
+         \vspace{-6mm}
+         \includegraphics[trim={595 0 0 50},clip,width=\textwidth]{Chapters/chapter2/figs/45401_for_paper_900ms.png}
+    \end{subfigure}
+    \caption{Data from the high speed visible camera for shot 45401 showing the level up/down symmetry when only the midplane HFS\_MID\_U02 valve is used (\subref{fig:mu01_tomo3a}), the valve LFSD\_BOT\_L0102 is initially used (\subref{fig:mu01_tomo3b}) and when the core density decreases (\subref{fig:mu01_tomo3c}).}
+    \label{fig:mu01_tomo3}
+\end{figure}
+The core density decreases while the upstream increases, indicating that the core might start being negatively affected by the fueling. At this stage a dense region is observed with TS penetrating the core from the HFS, indicating the growth of a MARFE-like structure there. The fact that in the upper divertor the current increases with $n_u$ while it decreases in the lower can indicate that the upper is still attached while the lower is detaching. This could mean that the two could be controlled independently and only share the upstream conditions. This will require further examination with a better diagnostic coverage of the upper part of the machine (LPs, radiative, etc.). From \autoref{fig:45401_export2_4} and \ref{fig:45401_export2_5} it seems tat the radiation penetrates in the core of the plasma. This is similar to what observed in \autoref{fig:45473_export2} but happens here at a much earlier stage of the MARFE-like structure growth. This might indicate that the radiation is indeed still on the separatrix and there is an issue in the exact location of the separatrix itself or IRVB alignment.
+
+From \autoref{fig:mu01_tomo2b} it can be observed that the core radiation from IRVB quite accurately match the estimate from the resistive bolometer up to when the inner leg completely detaches. This is a fair comparison, as up to that point no significant radiation from the detachment process reached the resistive bolometer FOV. After 800ms a strong radiation is observed close to the x-point, missed by the resistive bolometer and close to the midplane, missed by the IRVB, and the two conspire to compensate. Because of the strong asymmetry the radiation is likely overestimated by the IRVB after 800ms. It is noteworthy that even after the outer leg radiatively detaches there is still a significant radiation dissipated in the "divertor" region, mainly due to the outer leg and related SOL, with a significantly larger influence of the x-point than the low power case. The real radiated power probably peaks at about 1.5MW, amounting to more than half of the input of which, even during detachment, the core and especially the region around the separatrix is a largest component.
+
+The core $D_{\alpha}$ emission can the be used to evaluate the type of ELM regime during the detachment process, shown in \autoref{fig:hmode}. At the beginning of the shot, immediately after the SS NBI is fired the the plasma is a small ELMs regime, where a negligible fraction of the stored energy is dissipated and the density at the edge of the pedestal shortly decreases by 1/5. Then from 300ms and up to the full detachment of the outer leg the plasma is in a quiescent H-mode, without ELMs. Afterwards while the MARFE-like structure develops on the HFS it becomes dithering, with a stable shape of the shoulder.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[trim={40 0 80 50},clip,width=0.9\linewidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45401_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small4.png}
+	\caption{Hydrogen $D_{\alpha}$ emission from the midplane, used to asses the type of ELM regime of the H-mode. Each zoomed section can be identified by the color.}
+	\label{fig:hmode}
+\end{figure}
+
+NBI heated shots lacked the repeatability that was ahieved with low power ones, so it was not possible to identify a significant sample of shots with similar conditions to compare.
 
 
 \subsection{SXD discharges}
 
-
-\subsection{Movement of peak radiation with detachment}
-\hl{ACTUAL OBSERVATION}\\
-In discharges in which the core density was progressively increased, both via fuelling from the midplane or the divertor, the emissivity peak moves first from the inner target, then from the outer one, to the x-point. Increasing the density further the radiation moves upstream on the inner separatrix.
-In lower power discharges the inner target has a comparatively much lower emissivity than the outer target, even if the sequence of events remains the same, and the transition on the inner leg seems significantly faster.
-See \autoref{fig:44892} and \autoref{fig:45401}.
+During MU01 the super-x divertor was investigated, as it is a possible mean to improve the stability and performance of detached plasmas. As mentioned in \autoref{Inversions in the SXD} the IRVB is incapable of reconstructing the emission profile inside the SXD chamber, but can be used to infer the total emission there with a sufficient uncertainty. In \autoref{fig:45371_export2} are shown some of the emissivity profiles for the shot 45371, a Ohmic 600kA shot where the outer leg is initially forming a conventional divertor and is then moved inside the SXD chamber to form the super-x configuration. After this the plasma is fuelled only in the lower SXD chamber by the valve LFSD\_BOT\_L0102 for an increasing density scan.
+\begin{figure}
+     \centering
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 40 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_export_7.png}
+         \vspace*{-6.5mm}
+         \caption{462ms}
+         \label{fig:45371_export2_1}
+     \end{subfigure}
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 40 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_export_8.png}
+         \vspace*{-6.5mm}
+         \caption{572ms}
+         \label{fig:45371_export2_2}
+     \end{subfigure}
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 40 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_export_10.png}
+         \vspace*{-6.5mm}
+         \caption{754ms}
+         \label{fig:45371_export2_3}
+     \end{subfigure}
+     \begin{subfigure}{0.395\linewidth}
+         \centering
+         \includegraphics[trim={75 40 0 190},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_export_11.png}
+         \vspace*{-6.5mm}
+         \caption{828ms}
+         \label{fig:45371_export2_4}
+     \end{subfigure}
+    \vspace*{-3mm}
+    \caption{Changes in emissivity distribution in a density ramp for a super-x divertor, L-mode, Ohmic plasma (shot 45371, Double-null and 600kA). After the outer leg is moved in the super-x configuration the inner one is already radiatively detached and significant radiation is present in the SXD chamber (\subref{fig:45371_export2_1}). Then fuelling is increased and emission inside the super-x decreases (\subref{fig:45371_export2_2}) up to becoming negligible and the radiation climbs the inner separatrix (\subref{fig:45371_export2_3}). Then fuelling is cut and the radiation starts to come back towards the x-point (\subref{fig:45371_export2_4}). Note that the all images have different color bar ranges.}
+    \label{fig:45371_export2}
+\end{figure}
+As expected the radiation fades from the SXD chamber as fuelling is increased. In \autoref{fig:45371_export2_1} the radiation on the outer leg seems to be peaked at the strike point, but this is not guaranteed to be the case. This can be compared with the fueling level integrating separately the region around the outer leg and inside the super-x separately as shown in \autoref{fig:mu01_tomo5}. It can be observed that there is a good correlation between the fueling level, the decrease of the radiation in the SXD chamber and the increase of radiation in the remaining part of the outer leg.
 
 \begin{figure}
      \centering
-     \begin{subfigure}{0.21\textwidth}
+     \begin{subfigure}{0.8\linewidth}
          \centering
-         \includegraphics[trim={0 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_1.png}
-         %\caption{pinhole 4mm/stand-off 45mm}
-         \label{fig:44892_1}
+         \includegraphics[trim={0 555 0 310},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small4.png}
+         \vspace*{-12mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo5a}
      \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.2\textwidth}
+     \begin{subfigure}{0.8\linewidth}
          \centering
-         \includegraphics[trim={70 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_2.png}
-         %\caption{$4/60$}
-         \label{fig:44892_2}
+         \includegraphics[trim={0 350 0 830},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small4.png}
+         \vspace*{-12mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo5b}
      \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.2\textwidth}
+     \begin{subfigure}{0.8\linewidth}
          \centering
-         \includegraphics[trim={70 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_3.png}
-         %\caption{$4/60$}
-         \label{fig:44892_3}
+         \includegraphics[trim={0 110 0 1030},clip,width=\textwidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small4.png}
+         \vspace*{-7mm}
+         \caption{\phantom{ww}}
+         \label{fig:mu01_tomo5c}
      \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.21\textwidth}
-         \centering
-         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/44892_4.png}
-         %\caption{$4/60$}
-         \label{fig:44892_4}
-     \end{subfigure}
-    \caption{Changes in emissivity pattern from a attached plasma (left) to a detached one (right) in a low power discharge (shot 44892, DN-600-CD-OH, L-mode)}
-    \label{fig:44892}
+     \vspace*{-3mm}
+     \caption{Results from different diagnostics related to detachment for a super-x divertor, L-mode, Ohmic plasma (shot 45371, Double-null and 600kA). (\subref{fig:mu01_tomo5a}) Components of the global power balance: input power defined as the sum of Ohmic and NBI minus the variation in stored energy. The IRVB power is obtained by adding all voxels at Z$<$0 then multiplying by 2, therefore assuming up/down symmetry. The regions indicated are defined as per \autoref{fig:IRVB_regions_divided}. The vertical dashed lines indicate the time that corresponds to the data in \autoref{fig:45371_export2}. (\subref{fig:mu01_tomo5b}) averaged core density ($\overline{n_e}$) and upstream density from TS as per \autoref{Metrics from diagnostics} ($n_u$). (\subref{fig:mu01_tomo5c}) gas flow programmed for the valves used to fuel the plasma. There is no measurement of the effective gas flow produced by the valve setting.}
+	\label{fig:mu01_tomo5}
 \end{figure}
 
+This measurement can be in particular compared with the diagnostic suite that monitors the plasma inside the SXD chamber. A previous study found that in MAST-U SXD discharges the outer leg detaches in stages.\cite{Verhaegh2022} Starting from an attached plasma (stage 0), first the ionisation region, where the recycling neutrals are converted to plasma, detaches from the target and moves towards the x-point (stage I). This region is characterised by a strong emission in the deuterium molecular Fulcher band, due to molecules only being excited by a sufficiently hot plasma. Ionisation also scales with electron impact excitation (EIE) that excites preferentially lower deuterium excited states. Then a colder region where recombination due to particle molecules interactions dominates grows near the target and starts to move away from it (stage II). This region is characterised by an increase in emission of lower level deuterium Balmer and Lyman lines. Then an even colder region dominated by electron ion recombination (EIR) grows at the target (stage III). This is characterised by a increase in emission spread more equally among the excited levels. Lastly even this region retracts from the target and the density decreases (stage IV). On top of this impurities can, as mentioned before, greatly improve the radiated power from the plasma as can retain electrons on the inner shells at higher temperatures. No impurity was injected in MAST-U in MU01, but the wall is made of graphite, so carbon can be a significant player. In literature the end of the region with strong radiation from CIII de-excitation on the outer leg is used as a proxy for the presence of cold plasmas.\cite{Reimerdes2017,Smolders2020a} This movement of this front was used as a proxy for the progress of detachment, and used to control it.\cite{Ravensbergen2020}
+
+The multi-wavelength imaging diagnostic (MWI) can record data inside the SXD chamber for 11 wavelength regions.\cite{Feng2021,Perek2019} This can then be tomographically inverted and then integrated in the FOV (shown in \autoref{fig:IRVB_regions_divided}), to return the total number of photons in a given wavelength range. We can then take the total number of photons in the deuterium Fulcher band, from CIII and deuterium Balmer $3 \rightarrow 2$, $5 \rightarrow 2$ and $6 \rightarrow 2$ lines as a proxy for the steps mentioned above. The result is shown in \autoref{fig:SXD1}. Here are shown the number of photons relative to their peak level.
 \begin{figure}
-     \centering
-     \begin{subfigure}{0.21\textwidth}
-         \centering
-         \includegraphics[trim={0 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/45401_1.png}
-         %\caption{pinhole 4mm/stand-off 45mm}
-         \label{fig:45401_1}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.2\textwidth}
-         \centering
-         \includegraphics[trim={70 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/45401_22.png}
-         %\caption{$4/60$}
-         \label{fig:45401_22}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.21\textwidth}
-         \centering
-         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/45401_3.png}
-         %\caption{$4/60$}
-         \label{fig:45401_3}
-     \end{subfigure}
-    \caption{Changes in emissivity pattern from a attached plasma (left) to a detached one (right) in a high power discharge (shot 45401, DN-750-CD-2B, H-mode).}
-    \label{fig:45401}
+	\centering
+	\includegraphics[trim={40 0 25 50},clip,width=1\linewidth]{Chapters/chapter2/figs/IRVB-MASTU_shot-45371_pass1_bin7x3x3_gridres2cm_all_variables_absolute_small5.png}
+	\caption{Number of photons by wavelength radiated in the SXD chamber relative to the maximum level from MWI compared to the power radiated in the same region from IRVB. The number of photons is smoothed with a running average of the same length of the resolution of the IRVB data ($\sim37ms$). The arrow in the legend indicates to which y axis each line refers to. The number of photon axis is shrunk so that 1 corresponds to the peak level of the SXD chamber power.}
+	\label{fig:SXD1}
 \end{figure}
+The number of photons are representative of the reaction rate for each process, but each will have a different proportion of photons emitted in said wavelength range vs total reactions, and a different average energy per reaction. Assuming that these two quantities are about constant for the cold and dense plasma in the SXD chamber, the ratios in \autoref{fig:SXD1} are a proxy for the power due to the reaction relative to its maximum in the time ans space range of interest.
 
-\subsection{Detachment of SXD plasmas}
-\hl{ACTUAL OBSERVATION}\\
-As mentioned before the LOS entering the SXD chamber are too close to actually determine the emissivity distribution inside of it, but it is still possible to determine changes in the total radiated power. In \autoref{fig:45371} it is shown the change in total radiated power for a SXD discharge that experiences radiative detachment of the outer leg. Initially the total power radiated from the outer leg (simply defined as the region with $r>r_{X-point}, z<z_{X-point}$) and the SXD chamber grow together, with the part inside the chamber being the main contributor. Then after 0.4s the total in the whole leg remains stationary while it decreases in the chamber. This means that the radiation shifts in time upstream towards the x-point for increasing density.
-
-\begin{figure}
-     \centering
-     \begin{subfigure}{0.21\textwidth}
-         \centering
-         \includegraphics[trim={0 0 25 0},clip,width=\textwidth]{Chapters/chapter2/figs/45371_1.png}
-         \caption{target attached\\(425ms)}
-         \label{fig:45371_1}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.21\textwidth}
-         \centering
-         \includegraphics[trim={70 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/45371_2.png}
-         \caption{target detached\\(718ms)}
-         \label{fig:45371_2}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}{0.5\textwidth}
-         \centering
-         \includegraphics[trim={0 0 0 0},clip,width=\textwidth]{Chapters/chapter2/figs/45371_3.png}
-         %\caption{$4/60$}
-         \label{fig:45371_3}
-     \end{subfigure}
-    \caption{Changes in emissivity pattern for a SXD discharge where the detachment of the outer leg can be inferred from the change in total radiated power in the outer leg and SXD chamber (shot 45371, DN-600-SXD-OH, L-mode).}
-    \label{fig:45371}
-\end{figure}
-
-\subsection{detachment and configuration (CD/SXD)}
-\hl{to do}
-Is CD more easily attached than SXD? I'm quite sure it is but I need to find 2 similar discharges
-different inner/outer detachment?
-
-\subsection{radiation location and other metric of detachment}
-\hl{to do}
-Comparison of IRVB with other diagnostics (MWI and spectroscopy). It seems that in SXD the radiation exits the divertor together with the peak in ionisation (from spectroscopy) $->$ hydrogen radiation dominant
-In some CD shots the outer leg falls in the FOV of the MWI (even if barely). I can compare when the outer target radiatively detaches with MWI to estimate the main source of radiation.
-With HFS fuelling tot rad peaks in inner separatrix?
-Compare resistive bolometer at x-point and IRVB: the resistive bolometer is not blackened to there could be a difference in sensitivity depending on the source of radiation.
-
-\hl{TO DO use the plot from PSI that compares IRVB to LPs}
-
-\subsection{XPR and ELMs}
-\hl{to do}
-I already found shots that start attached with ELMs and they stop with detachment. What are the effectson the radiation profile? At what point in the path to radiative detachment ELMs stop?
+The changes before 400ms are mainly due to the srike point entering the MWI FOV. The following plateau of Fulcher and Balmer $3 \rightarrow 2$ could indicate the presence of ionisation and EIE. The initial rise of SXD chamber power scales very well with Fulcher and Balmer $3 \rightarrow 2$ emission, indicating that ionisation might be important there. The decreasing slope of the power from 400 to 500ms could scale better with CIII, indicating the presence of strong emission from carbon impurities. It must be noted, though, that if this region is observed moving out of the SXD chamber in that time window, a corresponding increase of radiation upstream on the leg should be observed, that is instead missing. this could indicate that carbon emission, albeit present, is not a dominant path to radiation during detachment in MAST-U. From 500 to 650ms both the SXD chamber power and the Fulcher band emission decrease in a fairly similar manner. The Balmer $3 \rightarrow 2$ emission instead increases, while higher lines are still negligible. This might indicate the increase in relevance in the SXD chamber of molecular processes. After 650ms the Fulcher band emission becomes negligible, indicating that the ionisation front left completely the SXD chamber. The higher $p$ Balmer lines now start to increase up to a maximum at $\sim$750ms, very close to when the fueling ramp is stopped. The common presence of strong emission from the 3 Balmer lines can indicate that EIR becomes more important. Checking the absolute values, nevertheless, shows still a number of photons decreasing for increasing excitation level, typical of molecular processes. In this narrative the presence of a gap between the dominance of ionisation and EIE and EIR where molecular processes dominate is particularly important, as their importance is still uncertain in fusion plasmas. The fact that the radiated power in the SXD chamber decreases much slower than the Fulcher band emission after 650ms indicates these processes can cause significant radiative losses.
