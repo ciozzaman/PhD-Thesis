@@ -6,7 +6,7 @@ I will explore here more technical details on the design of the IRVB diagnostic.
 
 It was realised when the data from super- experiment was analysed that the LOS that enter the super-X chamber have all a similar path through it, causing a large uncertainty on the source of the emissivity there. This can be shown by placing a phantom with known emissivity in the super-x chamber, determining the power on the foil and invert back to the emissivity. The result is shown in \autoref{fig:sxd_bad}.
 
-\begin{figure}
+\begin{figure}[!ht]
      \centering
      \begin{subfigure}{0.45\textwidth}
          \centering
@@ -40,7 +40,7 @@ To define the optimal geometry for good SNR two test cases were found:
 
 To perform the comparison the emissivity phantoms were calculated for each case with a binning of 14 temporal steps, 7 per camera digitizer, and 3x3 spatial ones with the present geometry. The negative emissivity was set to 0; to recreate a more realistic (field aligned) emissivity profile the emissivity was set to zero at $r>1m$ and $z>-1.5m$ for the 45239 phantom, while at $r>1m$ for 45401. The phantoms created are shown in \autoref{fig:phantoms}. The black dashed lines show the regions that will be used to compare the results.
 
-\begin{figure}
+\begin{figure}[!ht]
      \centering
      \begin{subfigure}{0.45\textwidth}
          \centering
@@ -63,7 +63,7 @@ To perform the comparison the emissivity phantoms were calculated for each case 
 The configurations investigated are all combinations of 45 and 60mm standoff and 4 and 6mm pinhole. 
 For each configuration the geometry matrix is calculated using CHERAB to obtain the power absorbed by the foil. The temperature was then calculated with the same phantom for a number of time steps equal to 4 times the binning and the count noise added. The temperature profile is then binned and the power to the foil is calculated. The tomographic inversion is performed with the intermediate time step to find the new emissivity profile. The profiles are compared to the phantom in terms of local emissivity and integrated power. The results are shown in \autoref{fig:table_mu02}.
 
-\begin{figure}
+\begin{figure}[!ht]
      \centering
      \begin{subfigure}{0.45\textwidth}
          \centering

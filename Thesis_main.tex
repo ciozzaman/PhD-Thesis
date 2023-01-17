@@ -11,10 +11,12 @@
 \usepackage{tabu}
 % \usepackage[hidelinks]{hyperref}	% Allows for embedded clickable
 \usepackage[hidelinks,pagebackref]{hyperref}	% Allows for embedded clickable and back reference at the page where the reference was used
+\def\chapterautorefname{Chapter}    % have Section as capital
 \def\sectionautorefname{Section}    % have Section as capital
 \def\subsectionautorefname{Section}    % have Section as capital
 \def\subsubsectionautorefname{Section}    % have Section as capital
 
+\usepackage{float}
 \usepackage{xcolor}   % allows for highlighted text
 \usepackage{soul}   % allows for highlighted text
 \usepackage{caption}   % allows subfigures
@@ -82,7 +84,7 @@ acknowledgments here
 \chapter{Magnum PSI activities}\label{chapter3}
 \input{Chapters/chapter3/chapter3}
 
-\chapter{Discussion}\label{chapter4}
+\chapter{Conclusions}\label{chapter4}
 \input{Chapters/chapter4/chapter4}
 
 % Anything after this line will be an appendix

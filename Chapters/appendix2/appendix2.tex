@@ -4,6 +4,8 @@ I will here expand in more detail on the models, approximations and assumptions 
 
 \section{Sampling strategy}\label{Sampling strategy}
 
+As mentioned above, of all diagnostics only the fast camera has a time resolution high enough to resolve individual ELM-like pulses. The TS laser is fired at a fixed frequency of 10Hz from a dedicated timing system. The CB can be triggered at an arbitrary time compared to the 10Hz clock so that information on different parts of the pulse can be collected. The OES is triggered with the same 10Hz signal as TS and, due to the rolling shutter, acquires data with a time shift between rows pairs of $20\mu s$ for a total of $22ms$ required for exposure and acquisition of a single frame. For all experimental conditions it was decided to record TS/OES data from $0.5ms$ before the ELM-like pulse to $2.5ms$ after. A desired time resolution of $50\mu s$ determines $(22+3)/0.05=500$ ELM-like pulses, rounded to 600, are required. A phenomena often observed was that one capacitor failed to be triggered at the requested time, instead being trigger together with the next. This means that rather than 600 identical ELM-like pulses, one would be missing and the one after would be with a released energy twice the others. To reduce the effect of the missing data the required 600 pulses are split in two 300 pulses scans with the CB delayed of $100\mu s$ at the time. The two scans are shifted of $50\mu s$ to obtain the desired $50\mu s$ resolution for all the OES rows. With this strategy the maximum time separation between two ELM-like pulses with good data is $100\mu s$ rather than 150$\mu$s. The missing data is obtained by interpolating between the good data. In \autoref{fig:sampling1} is represented the sampling strategy adopted. At the top is indicated how the camera exposure and readout are shifted in time due to the rolling shutter. 
+
 \begin{figure*}
 	\centering
 	\includegraphics[width=\linewidth,trim={0 0 0 0},clip]{Chapters/chapter3/figs/sampling_strategy_2.png}
@@ -11,15 +13,13 @@ I will here expand in more detail on the models, approximations and assumptions 
 	\label{fig:sampling1}
 \end{figure*}
 
-As mentioned above, of all diagnostics only the fast camera has a time resolution high enough to resolve individual ELM-like pulses. The TS laser is fired at a fixed frequency of 10Hz from a dedicated timing system. The CB can be triggered at an arbitrary time compared to the 10Hz clock so that information on different parts of the pulse can be collected. The OES is triggered with the same 10Hz signal as TS and, due to the rolling shutter, acquires data with a time shift between rows pairs of $20\mu s$ for a total of $22ms$ required for exposure and acquisition of a single frame. For all experimental conditions it was decided to record TS/OES data from $0.5ms$ before the ELM-like pulse to $2.5ms$ after. A desired time resolution of $50\mu s$ determines $(22+3)/0.05=500$ ELM-like pulses, rounded to 600, are required. A phenomena often observed was that one capacitor failed to be triggered at the requested time, instead being trigger together with the next. This means that rather than 600 identical ELM-like pulses, one would be missing and the one after would be with a released energy twice the others. To reduce the effect of the missing data the required 600 pulses are split in two 300 pulses scans with the CB delayed of $100\mu s$ at the time. The two scans are shifted of $50\mu s$ to obtain the desired $50\mu s$ resolution for all the OES rows. With this strategy the maximum time separation between two ELM-like pulses with good data is $100\mu s$ rather than 150$\mu$s. The missing data is obtained by interpolating between the good data. In \autoref{fig:sampling1} is represented the sampling strategy adopted. At the top is indicated how the camera exposure and readout are shifted in time due to the rolling shutter. 
-
 The rows are managed two at the time and during the readout of the rows $i-1/i$ the rows $i+1/i+2$ are exposed. Each OES LOS is composed of $\sim 24$ rows, so the time shift within would be $240\mu s$, much larger than the desired $50 \mu s$. Just below is indicated the TS integration time. OES and TS are synchronised such that the trigger to start data acquisition is sent to the two diagnostics simultaneously.
 The time difference between CB and OES/TS trigger is initially such that OES and TS reading correspond to the end of the ELM-like pulse. From this the CB trigger is progressively delayed by $100\mu s$ so that TS and OES can acquire data about progressively earlier stages of the pulse.
 For TS this sampling procedure returns directly $T_e$ and $n_e$ while for OES additional steps are required to: reconstruct frames with row data corresponding to the same time slice, bin the LOS, obtain the emission line brightness, calculate radial emissivity from the line integrates brightness. Further details are given in \autoref{OES data interpretation}. The final result is a map of the line emissivity in both space (radius) and time. The plasma is assumed poloidally symmetric with a radial coordinate of interval 1.06mm dictated by the OES resolution.
 
 \section{OES data interpretation}\label{OES data interpretation}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={440 50 600 150},clip]{Chapters/chapter3/figs/sample_oes.png}
 	\caption{Example of a raw image from the OES. The readout starts from the bottom so higher rows represent later times. In the figure are indicated rows/times corresponding to different stages of the ELM-like pulse}
@@ -29,18 +29,20 @@ For TS this sampling procedure returns directly $T_e$ and $n_e$ while for OES ad
 In this section it will be detailed how the OES measurements are processes to obtain the local radially and temporally resolved emissivity used to estimate the relevance of molecular processes.
 The camera that was selected for the purpose of collecting time resolved OES data was a Photometrics Prime95B 25mm RM16C, because of the relatively high signal to noise in low light conditions and large size of the sensor. In \autoref{fig:sampling2} is shown the typical picture collected during an experiment when on top of a steady state plasma an ELM-like pulse is fired. The rows are read sequentially from the bottom, with a time shift equal to the integration time, minimum $20\mu s$. This means that for the particular example shown the rows indicated as \emph{Before} represent times before the effect of the ELM-like pulse propagated to the OES location. \emph{During} represents the pulse and \emph{After} is for times after the ELM-like pulse, characterised by homogeneous line emission from the hot gas filling the target chamber. From \autoref{fig:sampling2} it is also possible to distinguish part of the 40 line of sight that are available.
 
-\begin{figure}
+The first effect that is compensated is the sensitivity of the camera at low signal levels. The counts/light intensity correlation of the pixels is mostly linear, but deviates significantly below 6 counts and negative counts are returned at very low signal. A routine was developed to compensate for this thanks to dedicated measurements to find the correlation between light intensity and counts.
+
+In order to decouple spatial and temporal information a scan is operated such that the ELM-like pulse is shifted in time respect to the start of the camera image record and TS measurement. More details on the sampling strategy in \autoref{Sampling strategy}. The presence of ELM-like pulses effected by capacitor bank misfires (see \autoref{Sampling strategy}) is found analysing the plasma source power and the data corresponding to those pulses is excluded. To separate the time and row dependency, for every row, column and time of interest the data in a range of $100\mu s$ and 8 rows is fit with a second degree polynomial in time and one in row. To avoid over smoothing the image a smaller weight is assigned for increasing times and row difference from the one that is being examined. In \autoref{fig:sampling3} is shown the time/row decoupled image. The output time step has a $50\mu s$ resolution to match TS data.
+
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={100 30 290 200},clip]{Chapters/chapter3/figs/sample_oes2.png}
 	\caption{Example of decomposed time frame showing the symmetry of the image to the vertical pixel $\sim$600, likely representing the location of the plasma column axis.}
 	\label{fig:sampling3}
 \end{figure}
 
-The first effect that is compensated is the sensitivity of the camera at low signal levels. The counts/light intensity correlation of the pixels is mostly linear, but deviates significantly below 6 counts and negative counts are returned at very low signal. A routine was developed to compensate for this thanks to dedicated measurements to find the correlation between light intensity and counts.
+The counts are summed among the rows composing each LOS and the line intensity is calculated by integrating above the background level. Brightness is then converted to emissivity via Abel inversion. The line emission is supposed poloidally symmetric and the plasma optically thin. In order to avoid unrealistic discontinuities given by noise, the superimposition of 3 Gaussian is fitted to the brightness profile as done by Barrois.\cite{Science2017} Each Gaussian can then be Abel inverted analytically and summed to obtain the total emissivity. In this process the uncertainties are propagated to be used in subsequent steps in the analysis. An example of the inversion process is shown in \autoref{fig:sampling4}. Given the signal to noise ratio and the available lines it is decided to use Balmer lines $p=4-8 \rightarrow 2$.
 
-In order to decouple spatial and temporal information a scan is operated such that the ELM-like pulse is shifted in time respect to the start of the camera image record and TS measurement. More details on the sampling strategy in \autoref{Sampling strategy}. The presence of ELM-like pulses effected by capacitor bank misfires (see \autoref{Sampling strategy}) is found analysing the plasma source power and the data corresponding to those pulses is excluded. To separate the time and row dependency, for every row, column and time of interest the data in a range of $100\mu s$ and 8 rows is fit with a second degree polynomial in time and one in row. To avoid over smoothing the image a smaller weight is assigned for increasing times and row difference from the one that is being examined. In \autoref{fig:sampling3} is shown the time/row decoupled image. The output time step has a $50\mu s$ resolution to match TS data.
-
-\begin{figure}
+\begin{figure}[!ht]
      \centering
      \begin{subfigure}{0.8\linewidth}
          \centering
@@ -85,12 +87,11 @@ In order to decouple spatial and temporal information a scan is operated such th
         \label{fig:sampling4}
 \end{figure}
 
-The counts are summed among the rows composing each LOS and the line intensity is calculated by integrating above the background level. Brightness is then converted to emissivity via Abel inversion. The line emission is supposed poloidally symmetric and the plasma optically thin. In order to avoid unrealistic discontinuities given by noise, the superimposition of 3 Gaussian is fitted to the brightness profile as done by Barrois.\cite{Science2017} Each Gaussian can then be Abel inverted analytically and summed to obtain the total emissivity. In this process the uncertainties are propagated to be used in subsequent steps in the analysis. An example of the inversion process is shown in \autoref{fig:sampling4}. Given the signal to noise ratio and the available lines it is decided to use Balmer lines $p=4-8 \rightarrow 2$.
 
 \section{Target temperature profile interpretation}\label{Target temperature profile interpretation}
 In this section the mathematical models used in the interpretation of the target temperature data will be examined in more detail.
 
-The heat delivered by the plasma to the target during an ELM-like pulse is shaped in time and space. The power density is spatially peaked at the centre of the plasma beam due to the peak in plasma density and temperature. It temporally follows the power evolution dictated by the discharge of the capacitor bank as measured by the plasma source (see \autoref{fig:TS1} for an example). The full spatial and temporal power density distribution of the target heat source is difficult to obtain from the surface temperature for all experimental conditions but analytical solutions that can approximate the peak temperature are available. As mentioned in \autoref{IR camera} the ones considered in this paper are:
+The heat delivered by the plasma to the target during an ELM-like pulse is shaped in time and space. The power density is spatially peaked at the centre of the plasma beam due to the peak in plasma density and temperature. It temporally follows the power evolution dictated by the discharge of the capacitor bank as measured by the plasma source (see \autoref{fig:TS1} for an example). The full spatial and temporal power density distribution of the target heat source is difficult to obtain from the surface temperature for all experimental conditions but analytical solutions that can approximate the peak temperature are available. As mentioned in \autoref{IR camera} the ones considered in this work are:
 
 \begin{itemize}
 \item[Model1] a temporally square heat wave delivered uniformly on a semi infinite plane: the surface temperature increase in the heating and cooling phases are respectively\cite{Behrisch1980}
@@ -160,14 +161,14 @@ T=\frac{a}{ (t+ \Delta t)^{3/2}} + T_{0}
 with $\Delta t$ the time between consecutive ELM-like pulses. The time dependent component is then subtracted.
 
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={750 550 10 115},clip]{Chapters/chapter3/figs/file_index_394_IR_trace_Capture049_43_old.png}
 	\caption{Measured and fitted peak target temperature for a discharge in Stage 1 (ID 5 in \autoref{tab:table1}). In dashed green the fit of the temperature profile using the triangular Gaussian pulse model for t>1.5ms and in solid green the whole profile. The black dashed line indicates the cooling from the previous pulse and the thin solid black one is the peak target temperature not corrected for this.}
 	\label{fig:IR4}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={5 5 55 65},clip]{Chapters/chapter3/figs/file_index_393_IR_trace_Capture048_46.png}
 	\caption{Peak temperature of the target for low neutral pressure (ID 5 in \autoref{tab:table1}). To estimate the effect of the ELM-like pulse only the second half of the pulses is used, when the target is close to a steady state.}
@@ -176,7 +177,7 @@ with $\Delta t$ the time between consecutive ELM-like pulses. The time dependent
 
 The result can be seen in the black dashed line in \autoref{fig:IR4} and in the increase of the peak temperature from the thin solid black line to the thick one. This correction is significant only for low neutral pressure conditions. In this cases it has to be taken also into account that it takes time to reach a thermal equilibrium after the ELM-like pulse train is started. To minimize this slow variation only the second 150 of the ELM-like pulses within a 300 strong scan is used to construct the average profile as it can be seen from \autoref{fig:IR5}.
 
-\begin{figure}
+\begin{figure}[!ht]
     % \hspace*{+10mm}
      \centering
      \begin{subfigure}{0.7\linewidth}
@@ -207,7 +208,7 @@ The result can be seen in the black dashed line in \autoref{fig:IR4} and in the 
 
 Considering all this a fit of the ELM-like pulse with the lowest neutral pressure can be used to compare the performance of the different models. As shown in \autoref{fig:IR6} all models fit well the slowly decreasing peak temperature slope and return a power density within 10\% of each other. Model3 fits best also the peak when the entire time axis is used.
 
-\begin{figure}
+\begin{figure}[!ht]
     % \hspace*{+10mm}
      \centering
      \begin{subfigure}{0.7\linewidth}
@@ -236,9 +237,9 @@ Considering all this a fit of the ELM-like pulse with the lowest neutral pressur
 
 The same comparison can be done with a simulated temperature rise obtained from a known input power profile. The MSC.Marc/Mentat® non linear FEM suite was used to reproduce a heat pulse similar to the one generated by the CB in terms of temporal and spatial variation and with temperature dependent material properties. The spatial distribution of the heat pulse was set as a Gaussian of radial extent consistent with what measured with TS ($1/e^2 \sim 1$cm) while the temporal variation was reproduced by fitting two Gaussians to the power profile from the plasma source. The comparison of the fits using the 3 models is shown in \autoref{fig:IR7}.
 
-Model3 is capable of better reproducing the full temperature profile returning, for the full fit, with a power density shape very close to the input one. Even if the pulse duration when fitting only after 1.5ms is quite different from the input, the energy density is within 10\% of the input one for all cases and, as mentioned before, the uncertainty on the energy delivered to the target is $\sim$20\%, good enough for the purpose of this paper.
+Model3 is capable of better reproducing the full temperature profile returning, for the full fit, with a power density shape very close to the input one. Even if the pulse duration when fitting only after 1.5ms is quite different from the input, the energy density is within 10\% of the input one for all cases and, as mentioned before, the uncertainty on the energy delivered to the target is $\sim$20\%, good enough for the purpose of this work.
 
-\begin{figure}
+\begin{figure}[!ht]
     \captionsetup{labelfont={color=black}}
     % \hspace*{+7mm}
      \centering
@@ -277,7 +278,7 @@ For $T_e$ and $n_e$ the TS values are used and the range is defined as 6 times t
 
 The range and probabilities for $n_{H_2}/n_e$ are obtained from B2.5-Eunomia simulations for a steady state neutral pressure scan with 2 plasma source settings, ranging from attached to detached via increasing neutral hydrogen target chamber neutral pressure, carried out by Chandra.\cite{Chandra2021,Chandra2022} The simulations consider the whole plasma column source to target, but only data inside the target chamber and within 2cm of the axis are considered here (marked with $x$, versus other regions marked by a point in \autoref{fig:priors1}, \ref{fig:priors2}, \ref{fig:priors3}, \ref{fig:priors4}, \ref{fig:priors4b}, \ref{fig:priors5}).
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 30 45},clip]{Chapters/chapter3/figs/nH2_ne3.png}
 	\caption{Correlation between molecular hydrogen and plasma density with temperature from B2.5-Eunomia modelling. The colored dashed lines are obtained with a linear log log fit for the single cases. The solid black line is obtained averaging the fitting parameters obtained.}
@@ -287,7 +288,7 @@ The range and probabilities for $n_{H_2}/n_e$ are obtained from B2.5-Eunomia sim
 
 As demonstrated by Den Harder\cite{DenHarder2015} the density decrease of $H_2$ in the plasma is mainly driven by rarefaction due to the high temperature of the plasma itself. For this reason a quite strong correlation between molecular hydrogen and plasma density ratio  and plasma temperature exists, shown in \autoref{fig:priors1}. The most likely ratio is obtained by fitting each simulation's results with a linear log log function and then averaging the fit parameters as shown in \autoref{fig:priors1}. The probability is defined as a normal distribution where 2 sigma corresponds to the black dashed lines, 100 and 1/100 times the fit value. The range is a significantly larger window around the dashed lines, to account for the large uncertainty coming from the fact that B2.5-Eunomia only simulates steady state conditions while the ELM-like burn through is a very dynamic one.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 30 45},clip]{Chapters/chapter3/figs/nH_ne3.png}
 	\caption{Correlation between atomic hydrogen and plasma density with temperature from B2.5-Eunomia modeling. The colored dashed lines are obtained with a linear log log fit for the single cases. The solid black line is obtained averaging the fitting parameters obtained.}
@@ -298,28 +299,28 @@ The simulations are used to provide also range and probability for $n_H/n_e$. At
 The probability was calculated with a linear normal distribution with nominal value from the fit (calculated in the same fashion as for $n_{H_2}/n_e$) and 2 sigma arbitrarily assigned as per the dashed line in \autoref{fig:priors2}.
 % no, this was reversed Given the large range and spread in $n_H/n_e$, the use of the probability for $n_H/n_e$ was later dropped and instead a linear uniform probability for all values was used.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 30 45},clip]{Chapters/chapter3/figs/TH_Te3.png}
 	\caption{Correlation between atomic hydrogen and electron temperature from B2.5-Eunomia modeling}
 	\label{fig:priors3}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 30 45},clip]{Chapters/chapter3/figs/TH2_Te3.png}
 	\caption{Correlation between $H_2$ and electron temperature from B2.5-Eunomia modelling. The colored dashed lines are obtained with a linear log log fit for the single cases. The solid black line is obtained averaging the fitting parameters obtained. This is assumed to be the same as ${H_2}^+$ temperature, while to obtain $H^-$ temperature 2.2eV are added to account for the $H_2$ dissociation energy.}
 	\label{fig:priors4}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 30 45},clip]{Chapters/chapter3/figs/TH2_Te_ne3.png}
 	\caption{Residuals from fitting $T_{H_2}$ with the scaling from \autoref{fig:priors4} and their weak dependence on the plasma density. The linear log log scaling in black is obtained by fitting all points at once.}
 	\label{fig:priors4b}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 30 45},clip]{Chapters/chapter3/figs/THp_Te3.png}
 	\caption{Correlation between $H^+$ and electron temperature from B2.5-Eunomia modelling. The dashed line indicates $T_{H^+}=T_e$.}
@@ -501,14 +502,16 @@ Let’s investigate now the volumetric sinks-sources term. There are roughly thr
 \begin{enumerate}
     \item Radiative losses. This mostly comes from the relaxation of excited hydrogen atoms, which can arise from both plasma-atom as well as plasma-molecule interactions. The radiative losses associated with $H_2$ molecular band radiation are expected to be of insignificant.\cite{Groth2019} \label{Radiative losses}
     \item Power transfer from kinetic energy to potential energy. Several plasma species have a relative potential energy associated with it (for instance, $H^+$ has a potential energy of 13.6eV compared to atomic hydrogen). Converting a neutral into an ion thus “converts” 13.6eV of kinetic plasma energy to potential energy.  \label{Power transfer potential}
-    \item Power transfer from CX and elastic collisions. CX as well as elastic collisions between the plasma and neutral atoms and molecules can lead to transfer of power from the plasma to the neutrals (and vice versa). \label{Power transfer CX}
+    \item Power transfer from CX and elastic collisions. CX as well as elastic collisions between the plasma and neutral atoms and molecules can lead to transfer of power from the plasma to the neutrals (and vice versa). This includes collisions between particles of the same specie but at different temperatures like the cold proton generated from ionisation and the hot one part of the plasma. \label{Power transfer CX}
 \end{enumerate}
 
 OES combined with collisional radiative models is used to estimate the magnitude of both path \ref{Radiative losses} and \ref{Power transfer potential}, which is employed in this work. For path \ref{Radiative losses}, the Balmer line emission is measured facilitating, through the Bayesian inference of the plasma properties, a full estimate of the hydrogenic line radiation from excited atoms arising both from plasma-atom as well as plasma-molecule interaction. For path \ref{Power transfer potential}, ionisation and recombination rates are estimated to account for the power transfer between potential and kinetic energy. In the recombination reaction a hot $H^+$ is converted into a neutral. That neutral has a kinetic energy equal to the temperature of the plasma that generated it, significantly higher than all other molecular and neutral species. For this reason the energy removed by the plasma assuming the neutrals from recombination escape is accounted in the local power balance. Additionally a series of molecular reactions are considered, see \autoref{Reactions} for which the difference in potential energy between reactants and products is calculated and accounted.
 
-Note that paths \ref{Power transfer potential} and \ref{Power transfer CX} do not strictly represent power lost from the plasma column but can be power transfer mechanisms. Such transfer mechanisms often lead to an effective loss of kinetic energy the plasma, but can also cause it to increase. In the power balance that regards the limitation of the power transferred from the plasma at a single radial location, \autoref{eq:plasma_column3}, this processes are considered. It is in fact impossible for the plasma to transfer energy from kinetic to potential for more more than it is available. Differently when the quantity of interest are the components of the global power balance, \autoref{eq:plasma_column9}, only terms where the energy is removed from the plasma column entirely will be considered. Internal power transfer will not be considered as it is energy that remains in the plasma.
+Note that paths \ref{Power transfer potential} and \ref{Power transfer CX} do not strictly represent power lost from the plasma column but can be power transfer mechanisms. Such transfer mechanisms often lead to an effective loss of kinetic energy by the plasma, but can also cause it to increase.
 
-Pathway \ref{Power transfer CX} cannot be readily analysed experimentally but can be analysed in detail in simulations. The importance of this is currently discussed in literature and it could be significant especially in low temperature conditions in tokamak divertors and linear machines. \cite{Myatra2021,Smolders2020,Chandra2022} Further code investigations on this and detailed comparisons against experiments are required, which is outside of the scope of this work. To check that neglecting CX and elastic collisions does not have a negative impact on the consistency of the solution a crude estimation was done in post processing. This is done by first calculating the ADAS CCD reaction rate for CX and AMJUEL 3.5 rate for $H_2$ elastic. These are multiplied by the density of the reactant species interested and by the maximum energy that can be transfer with a single collision. The energy of the reactants are equivalent to their temperature from TS and \ref{Priors from B2.5 Eunomia}. This results in \autoref{eq:CX_elastic}.
+In the power balance that regards the limitation of the power transferred from the plasma at a single radial location, \autoref{eq:plasma_column3}, pathway \ref{Power transfer potential} is considered. It is in fact impossible for the plasma to transfer energy from kinetic to potential for more more than it is available. Differently when the quantity of interest are the components of the global power balance, \autoref{eq:plasma_column9}, only terms where the energy is removed from the plasma column entirely will be considered. Internal power transfer will not be considered as it is energy that remains in the plasma.
+
+Pathway \ref{Power transfer CX} cannot be readily analysed experimentally but can be analysed in detail in simulations. The importance of this is currently discussed in literature and it could be significant especially in low temperature conditions in tokamak divertors and linear machines. \cite{Myatra2021,Smolders2020,Chandra2022} Further code investigations on this and detailed comparisons against experiments are required, which is outside of the scope of this work. To check that neglecting CX and $H_2$ elastic collisions, the ones to have the largest impact\cite{Chandra2022}, does not have a negative impact on the consistency of the solution a crude estimation was done in post processing. This is done by first calculating the ADAS CCD reaction rate for CX and AMJUEL 3.5 rate for $H_2$ elastic. These are multiplied by the density of the reactant species interested and by the maximum energy that can be transfer with a single collision. The energy of the reactants are equivalent to their temperature from TS and \ref{Priors from B2.5 Eunomia}. This results in \autoref{eq:CX_elastic}.
 \begin{equation}
 \label{eq:CX_elastic}
 \begin{aligned}
@@ -555,6 +558,7 @@ L_P =& L(y \in [0,P_{diss \: max}]) = \\ =& \frac{1}{2} \left[ erf ( \frac{P_{di
 where $P_{volume\ sinks-sources}$ is shortened with $P_{s-s}$.
 
 The power sinks/sources are calculated by adding all the radiative losses to the potential energy contribution. The latter is itself composed by positive and negative contributions that tend to cancel out. This causes the uncertainty of the sinks/sources to greatly dominate over the input one, making the effective use of this balance very difficult. To solve this issue $\sigma_y$ considered as equal to $\sigma_{\substack{P_{diss \: max}}}$ and that is assumed to be 50\% of $P_{diss \: max}$ (using the fixed nominal $T_e$, $n_e$ values from TS). 
+
 
 \subsection{Particle balance}\label{Particle balance}
 

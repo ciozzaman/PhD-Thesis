@@ -1,8 +1,8 @@
 
 
-\section{Introduction}\label{introduction}
+\section{Motivation}\label{Motivation magnum-psi}
 
-In tokamaks the core exhaust is directed to a small portion of the divertor target through the Scrape Off Layer (SOL). The parallel heat flux in a power plant size reactor is more than 2 orders of magnitude higher of what materials can withstand with current technologies so mitigations are required for it to be reduced to the widely used limit of $10MW/m^2$ orthogonal to the target. \cite{Pitts2019} One of such mitigations, planned to be used in ITER, is detachment. Here a buffer layer with low plasma temperature is created in front of the target such that a large fraction of the plasma energy is dissipated radiatively in the volume in front of it rather on the surface and the plasma flow is also reduced. This is induced with two methods: increasing the density in the divertor or seeding impurities. With the latter the impurities can retain electrons in the inner shell for a wider temperature range than hydrogen, radiating more efficiently in the SOL, causing a temperature reduction such that volumetric processes become relevant. With the former the high density in the divertor causes an increase in the density of hydrogen neutrals that can remove energy radiatively or via transport, reducing the temperature. \cite{Leonard2018} In both cases a region with strong emissivity “detaches” from the target and moves upstream towards the x-point. Detachment was demonstrated in Alcator C-Mod \cite{Lipschultz2007} and AUG \cite{Kallenbach2015a} to significantly reduce target heat flux in conditions scalable to burning plasmas like ITER.
+
 In high performance regimes short (sub ms) bursts of heat and particles from the core (edge localised modes, ELMs) happen cyclically increasing temporarily the heat flux by 2-3 orders of magnitude, and this can hardly be tolerated by large tokamaks. \cite{Jachmich2011} If ELMs happen when the target is detached the plasma temporarily reattaches and looses energy in the process of dissociating and ionising the neutrals. This is beneficial for the reduction of target heat load but computational and experimental investigations are difficult due to the dynamic nature of the phenomena.
 
 The aim of this study is to investigate the behaviour of ELM-like pulses on a detached target. During detachment the region in front of the target is cold so neutral and molecular density is high and this might effect the ELM behaviour. Of particular interest is the relevance of molecular assisted processes (ionisation (MAI), recombination (MAR) and dissociation (MAD)) over atomic. This was studied before in tokamaks and linear machines but never during the ELM burn through. \cite{Akkermans2020,Verhaegh2021a} Another topic is if a regime in which the ELM can effectively be baffled, meaning the energy reaching the target is negligible for its whole duration, exists.
@@ -133,7 +133,7 @@ In order to characterise the state of the plasma during the ELM-like pulse from 
 These images are taken with a $H\alpha$ filter with plasma in similar conditions to the ones in this work (1.2T, 120A). Because of the presence of the filter the images are effected by blur.
 For low target chamber neutral pressure the plasma emitting region is concentrated close to the target at the centre of the plasma column. This indicates that the interactions between plasma and the background gas are weak and the plasma can flow towards the target mostly unperturbed. This is due both to the low neutral density and to the fact that the high plasma temperature typical of low target chamber neutral pressure causes further dilution. \cite{DenHarder2015} Increasing the neutral pressure the radiation in the volume increases while it decreases close to the target, indicating the volume plays an increasingly important role. By increasing the neutral pressure further the radiation becomes absent close to the target and the plasma recedes from it. The peak plasma density close to the target first increases from 1.13 to $1.98 \cdot 10^{20}\#/m^3$ from 0.29 to 2.01Pa then decreases to the point that TS measurement fails at 17.3Pa. The peak plasma temperature conversely decreases from 3.34eV to 1.53eV and becomes undetectable at 17.3Pa. That is concomitant to a monotonic loss of plasma pressure, consistent with the with the behaviour of a plasma that experience detachment caused by the increase of neutral pressure.\cite{Perillo2019} The plasma is classified as attached to the target in \autoref{fig:SSa} and \subref{fig:SSb}, while detached in \autoref{fig:SSc}.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={7 0 9 45},clip]{Chapters/chapter3/figs/SS_scan4.png}
 	\caption{Radial average of the visible fast camera brightness for the steady state cases in \autoref{fig:SS}. The longitudinal position axis is cut after the target. The brightness decreases towards the source as the plasma exits the field of view of the camera.}
@@ -176,7 +176,7 @@ Averaging the visible fast camera brightness over the radial direction one can o
         \label{fig:ELM1}
 \end{figure*}
 
-The fast camera was set with a high frame rate of 67kHz and low integration time of 900ns in order to capture the bright ELM-like pulse behaviour. With this settings the brightness of the steady state is zero and only the pulse can generate counts. The ELM-like pulse lasts 0.7 to 1ms (equivalent to 67-47 frames) depending on the target chamber neutral pressure and a clear movement of a radiation front from the source to the target could not be clearly identified with this settings. In order to extract information on the behaviour across the ELM-like pulse the camera measurement is averaged in time over the time interval with non zero data. The data from a few ELM-like pulses in the same conditions is then further averaged. A sample of the results for the plasma conditions in this paper are shown in figure \autoref{fig:ELM1}.
+The fast camera was set with a high frame rate of 67kHz and low integration time of 900ns in order to capture the bright ELM-like pulse behaviour. With this settings the brightness of the steady state is zero and only the pulse can generate counts. The ELM-like pulse lasts 0.7 to 1ms (equivalent to 67-47 frames) depending on the target chamber neutral pressure and a clear movement of a radiation front from the source to the target could not be clearly identified with this settings. In order to extract information on the behaviour across the ELM-like pulse the camera measurement is averaged in time over the time interval with non zero data. The data from a few ELM-like pulses in the same conditions is then further averaged. A sample of the results for the plasma conditions in this work are shown in figure \autoref{fig:ELM1}.
 
 \autoref{fig:ELMa} corresponds to a low target chamber neutral pressure. In this conditions it is typical to register a bright emission in proximity of the target while almost nothing is visible far from it, meaning the vast majority of the interactions happens at the target while the plasma is transported, mostly undisturbed, through the bulk of the target chamber. This closely resemble what observed in \autoref{fig:SSa}, indicating that the plasma is here attached to the target. Another observation is that during the ELM-like pulse the visible fast  camera brightness close to the target increases and then decreases, while maintaining the same relative shape. This points towards the fact that the plasma is attached before, during and after the pulse. This is also confirmed by independent TS and OES measurements. From the steady state to the peak ELM-like pulse values $T_e$ rises from 5 to 9.38eV and $n_e$ from 1 to $23.7 \cdot10^{20}\#/m^3$ (see \autoref{Thomson scattering} for further details). This experimental condition is the first one encountered starting from low neutral pressure, so it is referred to a Stage 1. 
 
@@ -184,14 +184,14 @@ In \autoref{fig:ELMb} the neutral density is increased. The light emission in th
 
 If the neutral pressure is further increase from what causes Stage 2 to occur the baffling in the bulk of the target chamber can be so severe that the strong luminous spot close to the target might not appear. This is shown in \autoref{fig:ELMc}. In such cases the interaction of the plasma in the volume is so strong as to baffle the ELM-like pulse entirely. Only luminosity in the volume is present, closely resembling \autoref{fig:SSc} that corresponds to a detached plasma, meaning the plasma is detached before, during and after the ELM-like pulse. The OES, TS, and visible fast camera brightness is measurable for a much shorter time compared to the ELM-like pulse duration ($\sim 200 \mu s$ compared to $700 \mu s$) meaning most of the ELM-like pulse is baffled by the neutrals. This is further confirmed by TS as peak $T_e$ drops from 0.63 to 0.58eV and $n_e$ from 12.6 to $4.7 \cdot10^{20}\#/m^3$ increasing the neutral pressure from Stage 2 (ID 3 to 4 in \autoref{tab:table1}). This regime is referred to as Stage 3.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={110 0 170 85},clip]{Chapters/chapter3/figs/20.png}
 	\caption{Radial and temporal average of the visible fast camera brightness for the neutral pressure scan with strong ELM-like pulses, where we observe the transition from Stage 1 to 2. (ID 5-10 in \autoref{tab:table1}).}
 	\label{fig:ELM2}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={110 0 170 85},clip]{Chapters/chapter3/figs/39.png}
 	\caption{Radial and temporal average of the visible fast camera brightness for the neutral pressure scan with weak ELM-like pulses, where we observe the transition from Stage 1 to 3 (ID 1-4 in \autoref{tab:table1}).}
@@ -248,7 +248,7 @@ As previously mentioned the emission is not homogeneous in the whole target cham
 Thomson scattering measures the main plasma properties ($T_e$, $n_e$) and allows to determine the temporal evolution of the ELM-like pulse and the transfer of plasma energy from high temperature to high density for increasing neutral pressure. The data collected corresponds to plasma volumes along the path of the laser beam. The lines of sight of the light collection system are centred on the plasma column so data is collected on the plasma above and below the plasma column centre. These are averaged to return the radial profiles. A small time difference between OES and TS is also present so the raw $T_e$ and $n_e$ are resampled to match OES and smoothed to obtain the temporal and radial profiles.
 In \autoref{fig:TS1} are shown typical $T_e$ and $n_e$ from TS for experimental conditions in Stage 1, 2 and 3. On top is also shown the power dissipated by the plasma source averaged over multiple ELM-like pulses and aligned with TS. As aforementioned weak pulses are obtained via a lower magnetic field and a lower energy of the pulse itself. The lower magnetic field causes the energy of the pulse to distribute over a larger area and increase the surface of contact between plasma and cold gas. The lower temperature and density also causes the neutral mean free path to increase, allowing them to penetrate deeper inside the plasma column. For strong pulses $T_e$ decreases while $n_e$ increases as the neutral pressure and the amount of gas available to be ionised increases. The steady state properties become undetectable while the time corresponding to peak density shifts earlier in time. For weak pulses and high neutral pressure peak density is at even earlier times with a very low plasma temperature.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 0 0},clip]{Chapters/chapter3/figs/pure_TS_compare.png}
 	\caption{Comparison of plasma peak $T_e$, $n_e$ and $p_e$ smoothed over $700 \mu s$ for a neutral pressure scan with strong pulses (dashed lines, B=1.3T, pulse energy=48J), corresponding to \autoref{fig:ELM2} and weak (solid lines, B=0.6T, pulse energy=10.3J), corresponding to \autoref{fig:ELM3} (ID 5-10 and 1-4 respectively in Table 1)}
@@ -259,7 +259,7 @@ A comparison of the peak $T_e$, $n_e$ and $p_e$ ($=n_e2T_e/k_B$) smoothed over $
 
 In summary increasing the neutral pressure the plasma transitions from Stage 1 to Stage 2: the energy losses before reaching the TS measuring location increase but the ELM-like pulse energy is still enough to maintain the plasma pressure constant. Further increasing the neutral pressure the energy losses keep increasing and $n_e$ as well as $p_e$ decrease transitioning to a detached plasma in Stage 3.
 
-% \begin{figure}
+% \begin{figure}[!ht]
 % 	\centering
 % 	\includegraphics[width=\linewidth,trim={30 0 30 41},clip]{Chapters/chapter3/figs/image512.png}
 % 	\caption{Time delay of a small variation (5KW) of the energy flow reaching the measurement location above steady state caused by the increase in neutral pressure for strong pulses (ID 5 to 10 in \autoref{tab:table1})}
@@ -272,7 +272,7 @@ In summary increasing the neutral pressure the plasma transitions from Stage 1 t
 The IR camera returns 2D temperature profiles of the target temperature over time. Only 3 frames correspond to a single ELM-like pulse so multiple pulses are overlapped and averaged to increase the resolution aligning all pulses peak as done by Li.\cite{Li2020} To avoid being affected by thermal transients only the last 150 of the 300 pulses within every scan is considered (see \autoref{Target temperature profile interpretation} for details). From this data the time dependent peak temperature and the shape of the effected region are extracted. These are used to show that the ELM-like pulse energy delivered to the target decreases with increasing neutral pressure to the point of being negligible therefore achieving the baffling of the ELM-like pulse.
 
 
-\begin{figure}
+\begin{figure}[!ht]
      \centering
      % \hspace{+11mm}
      \begin{subfigure}{0.45\linewidth}
@@ -311,13 +311,13 @@ All the above analysis methods return similar values for the total energy densit
 
 Typical time dependent peak temperatures are shown in \autoref{fig:IR1}. The traces presents a sharp peak followed by a slow cooling period. This fast peak can be caused by emission from the plasma (prompt emission) or an actual temperature increase of the target. For low target chamber neutral pressure the peak temperature matches well with the analytical model: sudden heating of a very thin layer of the surface of the target then the heat quickly redistributes over a larger thickness and radius, being then more slowly dissipated to the actively cooled back plate.\cite{Li2020,Morgan2020} In high neutral pressure conditions the peak is still present but it is inconsistent with the following slower cooling. The profiles are fit with Model3, fitting for all times or only the time 1.5ms after the peak. For the Stage 1 case both fits return similar energy values and, most importantly, both fit well the curve for t>1.5ms. This is not the case in Stage 2, where the fit for all time fails appreciably. This demonstrate the inconsistency between the temperature peak and the slowly decreasing curve in high neutral pressure conditions. We attribute the enhanced peak to prompt IR line or continuum emission from the plasma (some hydrogen molecular lines lie inside the band allowed by the IR camera filter\cite{Sternberg1989}). This is further reinforced by examining the spatial temperature distribution at the peak compared to afterwards. Further detail on this and other aspects in \autoref{Target temperature profile interpretation}. The OES could be used to differentiate between emission from the plasma column and then reflected by the target or emission from its immediate vicinity but because of the different wavelength ($3.97-4.01\mu m$ vs $0.32-0.52\mu m$) a direct comparison is not possible. In order to avoid possible misinterpretations only the temperature after 1.5ms from the peak is used rather than the peak itself. 
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.9\linewidth,trim={35 0 75 22},clip]{Chapters/chapter3/figs/image515_2.png}
 	\caption{Results of analysis of the IR data for the variations in target chamber neutral pressure. In this figure we focus on the case of strong pulses (48J at the source) and higher magnetic field that yields higher plasma pressure background plasma (ID 5 to 10 in \autoref{tab:table1}). Analyzed data displayed are: target temperature before the ELM (blue), temperature increase during the ELM (red), ELM energy reaching the target (solid green) estimated with Model3 fitted after 1.5ms of the temperature peak and the steady state heat flux (dashed green).}
 	\label{fig:IR2}
 \end{figure}
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.9\linewidth,trim={35 0 80 30},clip]{Chapters/chapter3/figs/image516_2.png}
 	\caption{Results of analysis of the IR data for the variations in target chamber neutral pressure. In this figure we focus on the case of weak pulses (10.3J at the source) and lower magnetic field that yields lower plasma pressure background plasma (ID 1 to 4 in \autoref{tab:table1}). Analyzed data displayed are same as \autoref{fig:IR2}.}
@@ -332,7 +332,7 @@ This results are obtained using one diagnostic at the time. To gain more insight
 \section{Role of molecular assisted reactions}\label{Role of molecular assisted reactions}
 In this section we describe an analysis technique that merges information from different diagnostics on Magnum-PSI data to gain more insight on the dominant atomic and molecular processes during an ELM-like pulse. A significant aspect of this analysis is the inclusion of the molecular species $H_2$, ${H_2}^+$ or $H^-$. These species interact with the plasma leading to the formation of excited hydrogen atoms, power and particle sources/sink which have a significant influence on the behaviour of deeply detached plasmas. Since the interaction of these species with the plasma causes hydrogen line emission they will be referred to as molecular precursors.
 
-The ordinary method to infer the plasma properties from Balmer emission lines is to consider that the emission from higher-p H excited states is mainly generated via electron-ion recombination (EIR), while the emission from lower excited states is generated via electron impact excitation (EIE), and molecular contributions are generally neglected for simplicity. This normally allows to determine if the plasma is ionising, recombining or in between.\cite{Potzel2012,Verhaegh2019}. Under conditions like those in this paper, on the other hand, molecular contributions can be significant.\cite{Akkermans2020} Excited states of H generated via molecules are generally to low-p numbers, and their distribution across p is similar to the one of EIE (see \autoref{Limitations due to the measured lines}). 
+The ordinary method to infer the plasma properties from Balmer emission lines is to consider that the emission from higher-p H excited states is mainly generated via electron-ion recombination (EIR), while the emission from lower excited states is generated via electron impact excitation (EIE), and molecular contributions are generally neglected for simplicity. This normally allows to determine if the plasma is ionising, recombining or in between.\cite{Potzel2012,Verhaegh2019}. Under conditions like those in this work, on the other hand, molecular contributions can be significant.\cite{Akkermans2020} Excited states of H generated via molecules are generally to low-p numbers, and their distribution across p is similar to the one of EIE (see \autoref{Limitations due to the measured lines}). 
 
 In order to find the set of plasma/molecule/atom characteristics ($T_e, n_e, n_{H}/n_e, n_{H_2}/n_e, n_{{H_2}_+}/n_{H_2}, n_{{H}^-}/n_{H_2}$) that best match both the line emission (from OES) and the electron temperature and density (from TS), a Bayesian approach is followed. This allows the analysis method to pool together information from different diagnostics in combination with priors from simulations as well as reaction rates to find the best match to experimental data and thus derive an understanding of the dominant processes and effects on the energy and particle balance. The main advantage of this approach is that it can not only account for all uncertainties and non linear rates, but also allows calculating the probability density function (PDF) of the quantities of interest. This implies that multiple non unique solutions, if present, can be found.
 
@@ -348,7 +348,7 @@ We will describe here in more detail the steps to first initialize the paramente
 
 \subsubsection{Parameter space initialisation}\label{Parameter space initialisation}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[scale=0.29,trim={0 0 0 0},clip]{Chapters/chapter3/figs/bayesian_steps10.png}
 	\caption{Sketch illustrating how the initial guess of each parameter $\theta_i$ is done. With \emph{link} are marked items that link different parts of the global bayesian routine together. \emph{measurement} indicate quantities measured experimentally and \emph{external input} represents inputs from simulations or reaction rates libraries.}
@@ -406,7 +406,7 @@ Once the initial parameter space is determined the prior probability distributio
 
 \subsubsection{Bayesian analysis}\label{Bayesian analysis}
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[scale=0.29,trim={0 0 0 0},clip]{Chapters/chapter3/figs/bayesian_steps13.png}
 	\caption{Sketch illustrating how the likelihood distribution is determined comparing the line emission with the expected values and adding the prior log-probability, to refine the parameter grid and calculate the outputs PFD.}
@@ -437,7 +437,7 @@ When a reaction occurs, energy is transferred between different species (e.g. pl
 \subsection{Analysis limitations due to restrictions on measured Balmer lines}\label{Limitations due to the measured lines}
 While it is in general desirable to measure as many transition lines as possible, it became apparent during the setup of the experiment that the Balmer alpha line ($p=3\rightarrow 2$) could not be measured simultaneously with lines $p\geq 4\rightarrow 2$ due to the grating used. We describe herein how the lack of the Balmer $\alpha$ line prevents the separation of the line emission contribution from ${H_2}^+$ and ${H^-}$ precursors.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 0 36},clip]{Chapters/chapter3/figs/pure_rates_compare.png}
 	\caption{Density ratio of hydrogen excited states to p=4 for different processes for typical $T_e=1eV,n_e=4 \cdot 10^{21}\#/m^2$ plasma. The similarity of the profile shape for ${H_2}^+$ dissociation and $H^+$ mutual neutralisation is maintained for all the $T_e,n_e$ range of interest.}
@@ -455,7 +455,7 @@ In this section the results from the Bayesian analysis will be presented. The re
 \subsubsection{Power balance}\label{Power balance bayesian}
 As explained in \autoref{Bayesian analysis} the results at each time and radial location are a collection of PDFs for the quantities of interest in the volume from target skimmer to target, like the power radiated via EIE. The temporal and spatial distribution of the most likely values can already be useful, as they can inform on the conditions in which some phenomena are important. Ionisation and excitation tend to be more important close to the axis of the plasma column, where and when temperature is highest, but are not peaked on the axis as the atomic hydrogen density profile is hollow. Radiation from recombination is strong for high density and intermediate temperature. Radiation from molecules is present at similar times and locations as recombination but is significant up to even larger radii (and lower temperatures) than recombination. This is shown for ID 10 in \autoref{tab:table1} in \autoref{fig:bayes_example_1}.
 
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
      \begin{subfigure}{0.48\linewidth}
     	\includegraphics[width=\linewidth,trim={0 30 0 45},clip]{Chapters/chapter3/figs/_merge85_global_fit_example2.eps}
@@ -482,7 +482,7 @@ As explained in \autoref{Bayesian analysis} the results at each time and radial 
 \end{figure}
 
 The PDFs are summed over the radial direction, operating a convolution to keep into account the original probability distributions. An example of the radial sum of the power radiated from EIE at 0.4ms for ID 5 in \autoref{tab:table1} is shown in \autoref{fig:bayes_example_r_sum}. It can be noted that some PDFs, for example at $r=11mm$, show multiple peaks. This indicates that multiple possible combinations of the precursors densities that maximise the likelihood have been found.
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.9\linewidth,trim={0 332 0 0},clip]{Chapters/chapter3/figs/Bayesian_example_1.png}
 	\caption{Example of the radial sum of the power radiated via excitation for ID 5 in \autoref{tab:table1} at 0.4ms. Only the radial locations that are more relevant are here shown. The power density ($W/m^3$) at each location is multiplied by the volume it pertains to determine the x coordinate.}
@@ -490,7 +490,7 @@ The PDFs are summed over the radial direction, operating a convolution to keep i
 \end{figure}
 
 The evolution over time for the terms of local the power balance as per \autoref{Power balance} are shown in \autoref{fig:bayes_example_2} for the lowest and highest pressure cases.
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
      \begin{subfigure}{1\linewidth}
         \centering
@@ -515,7 +515,7 @@ In \autoref{fig:bayes_example_2b} the peak in power input corresponds with the p
 These results are quite similar to recent studies of detachment in medium size tokamaks including molecular precursors.\cite{Verhaegh2022,Verhaegh2021}
 
 The PDFs at each time are further convolved multiplying by the time interval they refer to, returning the total for the quantity of interest over the entire ELM-like pulse. In \autoref{fig:bayes_example_3} is shown how the total energy radiated by the plasma changes with target chamber pressure.
-\begin{figure}
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth,trim={0 0 30 60},clip]{Chapters/chapter3/figs/Bayesian_strong_4.png}
 	\caption{Energy dissipated radiatively per mechanism for increasing neutral pressure (ID 5 to 10 in \autoref{tab:table1}) obtained with the Bayesian analysis.}
@@ -523,7 +523,7 @@ The PDFs at each time are further convolved multiplying by the time interval the
 \end{figure}
 The divide between conditions of stage 1 (P<2Pa) and 2 (P>2Pa) is expressed in a small increase in the influence of molecules, that reach up to $\sim$1/3 of the total, but more importantly in a shift from dominance of EIE to EIR. Among radiation due to molecules the precursor that is more important is $H^-$. This would be against results from previous analysis that show a dominance of the ${H_2}^2$ precursor\cite{Akkermans2020} but, as mentioned in \autoref{Limitations due to the measured lines}, the radiation from ${H_2}^+$ dissociation and $H^+$ mutual neutralisation has similar line ratios for the lines used in this study, so cannot be distinguished with certainty.
 
-\begin{figure}
+\begin{figure}[!ht]
     	% \includegraphics[width=\linewidth,trim={40 280 60 60},clip]{Chapters/chapter3/figs/bayesian_strong_3.png}
         \centering
     	\includegraphics[width=0.7\linewidth,trim={0 0 0 5},clip]{Chapters/chapter3/figs/bayesian_strong_3b.png}
@@ -538,24 +538,25 @@ The CX losses increase from half to one order of magnitude higher than the input
 \subsubsection{Particle balance}\label{Particle balance bayesian}
 During the experiment there was no direct measurement of any part of the particle balance, so it is not as well constrained as the power balance. Nevertheless thanks to the assumptions and approximations in \autoref{Balance over the plasma column} and \ref{Particle balance} it is possible to perform a rough particle balance on the plasma column. The procedure to convolve the data from time and spatial dependent PDFs to a global one for the whole pulse is the same as previously mentioned for the power. In order to better understand the influence of molecular reactions on the plasma the individual reaction rates are divided in MAR, MAI and MAD. These are defined as the paths composed of a first reaction that converts a neutral specie ($H_2$, $H$) into a molecular precursor (${H_2}^+$, $H^-$) then a second one where the precursor is used. The final result of the two reactions combined can either be the recombination of the plasma that participated to the reactions (MAR) the ionisation of the original neutral (MAI) or the dissociation of $H_2$ (MAD). Here paths that cause ionisation or recombination and dissociation are not accounted in MAD to avoid double counting. All of the possible combinations of reactions that achieve the mentioned goals via a molecular precursor are added together to form the MAR, MAI and MAD rates.\cite{Verhaegh2020} 
 
-The particle balance on the plasma is shown in \autoref{fig:bayes3}.
-\begin{figure}
+
+\begin{figure}[!ht]
         \centering
     	\includegraphics[width=0.7\linewidth,trim={30 260 60 60},clip]{Chapters/chapter3/figs/bayesian_strong_6.png}
 	\caption{Plasma particle balance on the plasma column from the Bayesian analysis for strong ELM-like pulses with increasing neutral pressure (ID 5 to 10 in \autoref{tab:table1}). Total particle input from the plasma source estimated from \autoref{Balance over the plasma column} and \ref{Particle balance} ($(nv)_{H^+,in}$). Number of plasma particles created during the duration of the ELM-like pulse by type of reaction. MAR and MAI are defined as ensemble of multiple reactions that, starting from neutrals, first create a molecular precursor (${H_2}^+$, $H^-$) then further react with the end result of the two consecutive reactions being plasma recombination or ionisation respectively.\cite{Verhaegh2020}}
 	\label{fig:bayes3}
 \end{figure}
+The particle balance on the plasma is shown in \autoref{fig:bayes3}.
 Here are shown the plasma particle input, constituted by the source, the ionisation source and the recombination sink. MAI increases at lower pressure but is not very important representing a small fraction of the total ionisation. With the considered reactions ${H_2}^+$ is the only precursor that can participate cause MAI. MAR increases with pressure, but it dominates at low pressure (high temperature), and amounts to $\sim$1/3 at high pressure (low temperature). It is mainly due to the $H^-$ precursor. An important observation is that for low pressure conditions the ionisation source is higher than the estimated particle input from the source. The main difference between linear machines and tokamak divertors is that in a divertor, especially in high recycling, most of the particle source for the plasma comes from the recycling neutrals while the upstream plasma acts as the energy source. Conversely in linear machines the external source usually dominates. For low pressure conditions this does not happen here. If the neutrals predominantly come from plasma recycling at the target surface this might be evidence of recycling in a similar fashion as in a tokamak. This could be supported by the observations with the fast camera in \autoref{Fast camera}.
 The lines indicate the net balance of protons and electrons in the plasma column. This is in agreement with the analysis in \autoref{Power balance bayesian}, as for low pressure the thermal energy is converted to potential increasing the plasma flow (and density) while for high pressure the plasma is depleted in the volume leading to lower target heat flux, as shown in \autoref{IR camera}.
 
-\begin{figure}
+\begin{figure}[!ht]
         \centering
     	\includegraphics[width=0.7\linewidth,trim={35 5 60 50},clip]{Chapters/chapter3/figs/Bayesian_strong_7.png}
 	\caption{Atomic hydrogen particle balance on the plasma column from the Bayesian analysis for strong ELM-like pulses with increasing neutral pressure (ID 5 to 10 in \autoref{tab:table1}). It is assumed no atomic hydrogen enters the plasma column from the source thanks to differential pumping so only volumetric sources/sinks and interactions with the surface (not modelled here) are possible. Number of particles created during the duration of the ELM-like pulse by type of reaction. MAD is defined as ensemble of multiple reactions that, starting from neutrals, first create a molecular precursor (${H_2}^+$, $H^-$) then further react with the end result of the two consecutive reactions being exclusively $H_2$ dissociation.\cite{Verhaegh2020}}
 	\label{fig:bayes4}
 \end{figure}
 
-The particle balance for atomic hydrogen is shown in \autoref{fig:bayes4}. It must be kept into account that this balance is not directly constrained and that transport is not considered, so the balance is very tentative. Hydrogen from molecular reactions, and MAD within it, represent the largest contribution. Considering also that MAI is less then 10\% of MAD reaction rate, this means that most of the power losses due to molecules in the local power balance (\autoref{fig:bayes_example_2}) are due to MAD. Molecular reactions are responsible (integrating the local power balance) for about half of the potential energy exchange while up to a third of the radiative power losses. At the same time are not very important in the plasma particle balance while dominate the neutrals. It must be noted that the balance between effect on the power and particle balances, and potential to radiative losses, is heavily dependent on the rates used. For this work the Yacora rates have been used to determine the radiative power losses due to molecular precursors, while other rates from AMJUEL and Janev have been user to determine the reaction rates, with no guarantee of the compatibility of the two. For typical plasma conditions in this study ($T_e=2eV$, $n_e=10^{21}\#/m^3$), the average radiative power losses per molecular reaction for ${H_2}^+ + H^- \rightarrow H(p) + H_2$ are 0.17eV, for $H^+ + H^- \rightarrow H(p) + H$ 8.2eV, for ${H_2}^+ + e^- \rightarrow H(p) + H(1)$ and ${H_2}^+ + e^- \rightarrow H(p) + H^+ + e^-$ 0.72eV and for $H_2 + e^- \rightarrow H(p) + H(1) + e$ 0.026eV. The molecular rates are less established then atomic ones, so these numbers can change and significantly effect the power balance.
+The particle balance for atomic hydrogen is shown in \autoref{fig:bayes4}. It must be kept into account that this balance is not directly constrained and that transport is not considered, so the balance is very tentative. Hydrogen from molecular reactions, and MAD within it, represent the largest contribution. Considering also that MAI is less then 10\% of MAD reaction rate, this means that most of the power losses due to molecules in the local power balance (\autoref{fig:bayes_example_2}) are due to MAD. Molecular reactions are responsible (integrating the local power balance) for about half of the potential energy exchange while up to a third of the radiative power losses. At the same time are not very important in the plasma particle balance while dominate the neutrals. It must be noted that the balance between effect on the power and particle balances, and potential to radiative losses, is heavily dependent on the rates used. For this work the Yacora rates have been used to determine the radiative power losses due to molecular precursors, while other rates from AMJUEL and Janev have been user to determine the reaction rates and the potential energy losses, with no guarantee of the compatibility of the two. For typical plasma conditions in this study ($T_e=2eV$, $n_e=10^{21}\#/m^3$), the average radiative power losses per molecular reaction for ${H_2}^+ + H^- \rightarrow H(p) + H_2$ are 0.17eV, for $H^+ + H^- \rightarrow H(p) + H$ 8.2eV, for ${H_2}^+ + e^- \rightarrow H(p) + H(1)$ and ${H_2}^+ + e^- \rightarrow H(p) + H^+ + e^-$ 0.72eV and for $H_2 + e^- \rightarrow H(p) + H(1) + e$ 0.026eV. The molecular rates are less established then atomic ones, so these numbers can change and significantly effect the power balance.
 
 
 % \begin{itemize}
@@ -570,3 +571,10 @@ In low pressure conditions volume recombination is negligible and the vast major
 The results from particle balances are here tentative and obtained with strong approximations, so further investigations will be necessary to verify them.
 
 
+\section{Summary}\label{summary magnum-psi}
+
+The effect of ELM-like pulses on a detached target in Magnum-PSI was studied with the help of various diagnostics. It was found that the ELM-like pulse energy can be effectively dissipated for high level of detachment before it reaches the target. The decreasing power reaching the target seems related to higher volumetric power losses in the volume between target and source. They seem initially fairly uniform becoming more and more uneven increasing the target chamber neutral pressure further, correlated with increased loss of plasma before reaching the location where it is measured. This behaviour can be divided in stages. In Stage 1 the plasma is attached before and during the ELM-like pulse and the energy losses in the volume are at a minimum and predominantly not radiative. In Stage 2 the target chamber neutral pressure is such that the plasma is detached from the target in steady state but can reattach during the ELM-like pulse. Radiative energy losses in the volume increase to dominate over other mechanisms, mainly driven by molecular assisted reactions. In Stage 3 the plasma is detached before and during the pulse and the losses in the volume are such that the plasma cannot reach the target, being effectively baffled.
+
+Hydrogen Balmer line emission from optical emission spectroscopy was used to develop a Bayesian routine that incorporates organically the results from multiple diagnostics to return the power balance in the plasma column in the target chamber. Various approximations to extrapolate the results from a single location in the target chamber to its entirety were adopted. The routine incorporates priors from numerical simulations and collisional radiative codes so that atomic interactions can be distinguished from molecular ones. It was found that radiation from the plasma due to molecular assisted reactions is an important but not dominant energy loss mechanism. Mutual neutralisation of ${H}^-$ seems to dominate radiative losses, but it was established that this cannot be determined from OES alone with the present setup. Molecular assisted reactions significantly effect the local power balance via the exchange of potential energy, limiting what is available for ionisation. MAD is the most significant path via molecular precursors, but this could be due to an unconstrained paticle balance for $H_2$ and $H$. Molecular processes are mostly dominant in an intermediate temperature range around 3eV, between ionisation and EIR dominant regions.
+
+These results indicate that for highly detached regimes in linear machines, and most likely also Tokamaks, molecular interactions are important and need to be accounted both in terms of potential energy exchange and induced hydrogenic line radiation, something that it’s not yet fully done in many codes used for Tokamak edge plasma studies.
