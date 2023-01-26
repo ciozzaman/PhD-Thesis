@@ -44,7 +44,7 @@ ENTRY
     edition
     editor
     eid
-	doi
+    doi
     howpublished
     institution
     journal
