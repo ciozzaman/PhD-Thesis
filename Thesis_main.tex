@@ -9,8 +9,8 @@
 \usepackage{epstopdf}
 \usepackage[compress]{cite}	% Allows for the use of a bibliography, and automatically handles things like numbering
 \usepackage{tabu}
-% \usepackage[hidelinks]{hyperref}	% Allows for embedded clickable
-\usepackage[hidelinks,pagebackref]{hyperref}	% Allows for embedded clickable and back reference at the page where the reference was used
+
+
 \def\chapterautorefname{Chapter}    % have Section as capital
 \def\sectionautorefname{Section}    % have Section as capital
 \def\subsectionautorefname{Section}    % have Section as capital
@@ -31,8 +31,14 @@
 
 \usepackage{gensymb}    % this is to have the degree symbol
 
+
+
+% \usepackage[hidelinks]{hyperref}	% Allows for embedded clickable
+\usepackage[hidelinks,pagebackref]{hyperref}	% Allows for embedded clickable and back reference at the page where the reference was used
+
+
 % Title
-\title{Thesis title}
+\title{Study of detachment and the processes involved in its dynamics in MAST-U and Magnum-PSI via radiation and emission analysis}
 % Author
 \author{Fabio Federici, MSc.}
 % Dept - required for front page. Do not put "Department of" as York do not allow it
@@ -57,7 +63,19 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
 % Text for abstract goes here
-The process of divertor detachment in tokamaks is associated with the reduction of power and particle to the targets. This is expected to be necessary to limit the damage and erosion of solid surfaces and prolong the life 
+The process of divertor detachment in tokamaks is associated with the reduction of power and particles to the targets. This is deemed necessary to limit damage and erosion of solid surfaces and preserve the target.
+
+The evolution of the radiation profile is studied in MAST-Upgrade, thanks to the novel Infra Red Video Bolometer (IRVB) diagnostic. The IRVB was optimised to observe the lower x-point and divertor and was successfully calibrated and verified post installation.
+
+The movement of the radiation along the divertor legs and inner separatrix was compared with other metrics of detachment. In MAST-U L-mode plasmas, progress of radiative detachment happens in the same sequence as in large aspect ratio tokamaks. Inner leg detachment is gradual, appearing to be contrary to expectations from theory, which is beneficial to detachment control.
+
+The IRVB, in combination with spectroscopic measurements, was used to infer that in MAST-U, during detachment of a super-x plasma, hydrogenic emission dominates radiation on the outer leg. This is in stark contrast with another carbon machine, TCV, where carbon dominates instead.
+
+ELM-like pulses have been reproduced on the linear machine Magnum-PSI at DIFFER. The target chamber neutral pressure was increased to simulate detachment of the steady state plasma. In some cases the ELM-like pulse energy was completely dissipated in the volume. This can potentially translate to tokamaks, if the ionisation front has sufficiently receded from the target.
+
+Despite significant radiative losses, most of the plasma energy losses are due to potential energy exchange. Both molecular assisted recombination and dissociation are important, with the latter being a more efficient path to dissociation than electron impact dissociation.
+
+Studying detachment in both machines it is determined that, when the plasma temperature drops below $\sim$5eV, it is necessary to include molecular assisted reactions to accurately model the plasma’s power and particle balance.
 
 % Create contents page
 \contents
@@ -65,12 +83,60 @@ The process of divertor detachment in tokamaks is associated with the reduction 
 % Acknowledments section
 \acknowledgments
 \phantomsection
-acknowledgments here
+
+
+This work was only possible thanks to the support of my supervisor Bruce Lipschultz; my ``unofficial'' supervisor Matthew Reinke; CCFE exhaust group; the collaborators from CCFE and DIFFER; the staff of the YPI; the engineers and technicians of MAST-U and Magnum-PSI, and all my PhD colleagues in and out of the CDT, to all of which I'm very thankful.
+
+First of all, I would like to thank Bruce for his support in these years. The project had its ups and downs, not helped by a pandemic in its middle, but we did the best we could to navigate towards our goals. It must have been difficult to manage a student based in a different lab, with a background in engineering rather than physics and eager to always fall in the newest rabbit hole, but he did a very good job. I'm also thankful for Bruce taking care of the organisational hiccups sometimes arising from the hardware work, providing the critical push for things to follow through.
+
+I would like to thank Matt, as he made the entire PhD possible and was responsible for engineering and procuring the hardware, with all the headaches it implies. He taught me how to design, calibrate and use an IRVB diagnostic and his help was necessary in interfacing with a device as complicated as MAST-U. He taught me the care and thoughtfulness necessary to operate on a machine as complex as MAST-U and didn't get angry when ``magic smoke'' was accidentally released. Matt was often helpful to smooth the discussion and was always seeking tangible results.
+
+Plenty of others have helped me during these 5 years but they would not fit on these few pages. I can explicitly mention only a few, so I apologize in advance for who is not here, but I'm still grateful to.
+
+I thank Tom Farley, whose help was necessary to manage the multitude of interfaces between the IRVB and MAST-U and helped to deal with the documentation. This team work was vital and I wish him and his family the best. I would like to thank Gijs Akkermans for providing the first contact that made the collaboration with DIFFER possible, his teachings on spectroscopy, and allowing me to meet so many wonderful people.
+
+I want to thank everyone that helped me progress towards my results in MAST-U, and among many in particular Andrew Thornton, Jack Lovell, Richard Martin, James Harrison, Peter Ryan, Joe Allcock, Mike Robson, Kandan Balamurugan, Nigel Thomas-Davies and all the MAST-U team. I also want to thank those who helped me navigate through the different environment of DIFFER like Ivo Classen, Thomas Morgan, Jonathan van den Berg and all the Magnum-PSI operations team.
+
+I can't thank Kevin Verhaegh enough, whose spectroscopy and operations knowledge was instrumental, together with help from Daljeet Singh Gahle, to steer the work on molecules towards its scientific objectives. Chris Bowman was invaluable in providing support for everything Bayesian.
+
+I'm infinitely grateful to Yoshika Terada who gave me the courage to seek and start the PhD in the first place. She supported me all this years, from Massa Lombarda to Oxford, and has always believed in me. She also helped me in developing the tools to analyse the raw and processed data.
+
+I would like to thank all the people that made my stay in the UK a lot more fun, and I'm happy to have had the chance to meet, of which I would like to mention Omkar, Hasan, Eduardo, Steve, Charlie, Lena, Tom N, Jack, Sam, Simon, Joe, Michail and all the Fusion CDT group. I thank in particular Andrew for his support and willingness to adapt to the Italian ways; Nick for editing this thesis; Mads for introducing me to caving; Yacopo and Nicola to bring Italian vibes in this far away land. I'm thankful for all the great people I met in The Netherlands and are part in making it a \emph{beautiful} place, like Aaron, Michele, Luca, Ana, Qin, Devyani and all the Pineapples.
+
+I'm thantful to Vittorio Colombo, who first taught me about plasmas and, many years later, helped me secure the PhD.
+
+Last but not least I would like to thank my family and all my friends in Italy that have always supported me.
+
+Voglio ringraziare i miei amici d'infanzia, che sono da sempre al mio fianco e che sono sempre felice di incontrare: Diego, Lorena, Bert. Voglio anche ringraziare i miei amici dell'università, con sono ancora vicino e il cui successo mi ha motivato per intraprendere il dottorato: Alberto, Viola, Benny, Fede.
+
+Voglio anche ringraziare Massimo Foresti e tutti gli ex-colleghi dell'Elettrotecnica Imolese che, nonostante per iniziare il dottorato abbia dovulo lasciare l'azienda, mi sono sempre stati amici.
+
+Infine voglio ringraziare la mia famiglia, che nonostante la scelta di intraprendere il dottorato più tardi della norma e di stare così lontano da casa mi ha sempre voluto bene e sostenuto.\\
+
+
+
+\fbox{\begin{minipage}{\linewidth}%{15em}
+
+Support for M. L. Reinke’s contributions was in part provided by Commonwealth Fusion Systems.
+
+This work has been carried out within the framework of the EUROfusion Consortium, funded by the European Union via the Euratom Research and Training Programme (Grant Agreement No 101052200-EUROfusion). Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union or the European Commission. Neither the European Union nor the European Commission can be held responsible for them.
+
+The authors wish to also acknowledge Byron J. Peterson for providing the blackened and calibrated platinum foil used as absorber in the IRVB.
+
+This work was supported in part by the DIFFER institute.
+
+
+\end{minipage}}
+
+
+
+
+
 
 % Declaration - explicitly say that your thesis is your own work.  Some text is generated automatically from the class file.  Anything else can be added below
 \declaration
 
-{Portions of this thesis are based on manuscript which has been published to peer-reviewed journals. I am the first author of this manuscript. Where appropriate, this work has been referenced. The vast majority of the work has been done by the main author and is explicitly stated otherwise. The manuscript is:
+Portions of this thesis are based on manuscript which has been published to peer-reviewed journals. I am the first author of this manuscript. Where appropriate, this work has been referenced. The vast majority of the work has been done by the main author and is explicitly stated otherwise. The manuscript is:
 
 F. Federici, M. L. Reinke, B. Lipschultz, A. J. Thornton, J. R. Harrison, J. J. Lovell, and M. Bernert. Design and implementation of a prototype infrared video bolometer (IRVB) in MAST Upgrade. \emph{Review of Scientific Instruments}, 2023. Also cited in this work as \cite{Federici2023}.
 
@@ -81,6 +147,28 @@ F. Federici, M. L. Reinke, B. Lipschultz, A. J. Thornton, J. R. Harrison, J. J. 
 % % Main Matter % %
 % The general document structure is detailed by the graduate research school on the website under "Format your Thesis"
 % Labels allow you to link sections of your thesis together with hyperlinks within the PDF
+
+
+% Executive summary section
+
+% \phantomsection
+\chapter*{Executive summary}
+\addcontentsline{toc}{chapter}{Executive summary}
+
+
+The changes of radiation profile due to detachment were characterised in MAST-U. This was enabled by the new infra red video bolometer (IRVB) diagnostic. The diagnostic was originally designed by Matthew Reinke, based on previous work on NSTX-U.\cite{VanEden2016} %A thin foil is shielded by the plasma, excepted for a pinhole. The light from the plasma goes through the pinhole and is absorbed by the foil. The foil is then monitored by an infra red camera. With known foil properties, its temperature can be used to determine the power absorbed by the foil and the emissivity can be obtained via tomographic reconstruction. 
+The field of view (FOV) of the IRVB is designed to accurately measure the radiated power profiles around the lower x-point region, where large spatial gradients of emissivity are expected. The FOV includes a poloidal view of the plasma covering $\sim$2/3 of the foil and a tangential view over the rest. The diagnostic was optimised using the ray tracing code CHERAB and fully characterised prior to installation. Due to restricted vessel access, the match between design and real FOV was verified using known features of the plasma itself, like the silhouette of the central column, highlighted by disruptions, and bright spots corresponding to fuelling locations. This verification is a difficult task for foil bolometers, as the minimum signal that can be detected is of brightness similar to the plasma, so they cannot be calibrated with long exposure images like other camera diagnostics.
+
+In parallel to the hardware and calibration activities, an inversion algorithm was developed to obtain the emissivity distribution. This follows a Bayesian approach where, given a set of priors (limited negative emissivity and regularity), the uncertainties of the components of the IRVB are propagated so as to find the most likely radiation distribution that yields the measurements. The radiated power inferred has a spatial resolution of the order of few cm, difficult to achieve in the x-point and divertor region, and unprecedented in spherical tokamaks. This demonstrates the viability of the IRVB to measure radiation in a region other than the core, for which they are usually employed.
+
+In MAST-U the IRVB was used to determine that, in a conventional divertor L-mode plasma, radiative detachment follows the same progression as in large aspect ratio tokamaks: the inner target detaches first, followed by the outer, then the radiation climbs the inner separatrix to form a MARFE-like structure at the midplane that can then penetrate into the core. In MU01 no extrinsic impurities were fed to the plasma, and the radiation was not observed to penetrate the core from the x-point, as was previously observed in other devices.\cite{Wiesen2017} The radiation on the inner leg was observed with unprecedented resolution and it was determined that its movement from target to x-point is gradual, appearing to be contrary to expectations from theory.\cite{Lipschultz2016} The IRVB was also used, in conjunction with the MWI and other spectroscopic measurements, to infer that, after the particle flux roll over in a super-x plasma, the radiation is mainly dominated by hydrogenic radiation, unlike in the comparable carbon wall devices TCV. It is inferred that, after the ionisation front recedes from the target and the plasma cools, radiation from molecular effects becomes dominant.
+
+
+As part of a collaboration with The DIFFER institute, ELM-like pulses were reproduced in the linear machine Magnum-PSI. The steady state plasma was progressively detached by increasing the neutral pressure in the target chamber, simulating the burn through in a tokamak divertor. It was observed that by increasing the neutral pressure it was possible to reduce the energy delivered to the target, up to complete shielding in extreme cases. This is associated with a reduction of the heat flux factor, a measure of the effect of heat transients on wall components. This observation could potentially be applicable for tokamaks, as the connection length between the radiation front and the target can be of the order of meters (in deep detachment) while the pressure can reach a few tens of Pa, as it was in Magnum-PSI. This can be further improved if the divertor is baffled, so that the neutral compression is enhanced, and an advanced divertor configuration like the super-x is adopted, resulting in a much longer connection length.
+
+The optical emission spectroscopy (OES) setup was upgraded by the author and Gijs Akkermans in order to acquire intra-ELM data. The OES is composed by a series of parallel poloidal lines of sight, so that Balmer line emission can be determined radially. This was used, together with a crude model of the plasma column, to infer the processes in the plasma via a Bayesian inference. For this study the effect of molecular reactions was accounted for in terms of line emission and in both the particle and power balance. It is observed that even if radiative losses are significant, exchanges of potential energy dominate the plasma energy losses. Of the molecular reactions, the path to molecular assisted dissociation is the most important, as it is more efficient than electron impact dissociation. Molecular assisted recombination is also important, especially at intermediate temperatures, but electron ion recombination dominates for cold plasmas. It is found that ionisation dominates for temperatures above $\sim$5eV while molecular processes become important in colder plasmas and electron ion recombination dominates below $\sim$1.5eV.
+
+The results from both devices indicate that in deep detachment and during the burn through, when plasmas interact with colder neutrals and molecules, the effect of molecular reactions becomes important at mid to low temperatures. This is a useful insight for the development of models used to estimate the plasma energy losses during detachment or removed from ELMs before they reach the target.
 
 
 \pagestyle{headings}
